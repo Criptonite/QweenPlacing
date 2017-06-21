@@ -6,6 +6,8 @@ import javax.swing.*;
 import javax.swing.border.BevelBorder;
 import javax.swing.border.CompoundBorder;
 import javax.swing.border.EmptyBorder;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
 import java.awt.*;
 
 
@@ -60,7 +62,7 @@ public class MainFrame extends JFrame {
 
 
         //Create left panel
-        graphPanel = new GraphPanel();
+        graphPanel = new GraphPanel(this);
         graphPanel.setMinimumSize(leftPanelMinDimension);
         graphPanel.setMaximumSize(leftPanelMaxDimension);
         graphPanel.setPreferredSize(leftPanelPreferredDimension);
@@ -73,7 +75,7 @@ public class MainFrame extends JFrame {
         rightPanel.setMaximumSize(rightPanelMaxDimension);
         rightPanel.setPreferredSize(rightPanelPreferredDimension);
         rightPanel.setLayout(new BoxLayout(rightPanel, BoxLayout.Y_AXIS));
-        rightPanel.setBorder(new CompoundBorder(new EmptyBorder(5, 5, 5, 5),
+        rightPanel.setBorder(new CompoundBorder(new EmptyBorder(1, 1, 1, 1),
                 new BevelBorder(BevelBorder.LOWERED)));
 
 
@@ -93,6 +95,12 @@ public class MainFrame extends JFrame {
         sizeSpinner.setMinimumSize(spinnerMinDimension);
         sizeSpinner.setMaximumSize(spinnerMaxDimension);
         sizeSpinner.setPreferredSize(spinnerPreferredDimension);
+        sizeSpinner.addChangeListener(new ChangeListener() {
+            @Override
+            public void stateChanged(ChangeEvent e) {
+                graphPanel.updateUI();
+            }
+        });
 
         //Add to sub panel
         sizeSubPanel.add(sizeLabel);
@@ -150,4 +158,7 @@ public class MainFrame extends JFrame {
         getContentPane().add(rightPanel);
     }
 
+    public int getSpinnerValue() {
+        return (int) sizeSpinner.getValue();
+    }
 }

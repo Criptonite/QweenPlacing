@@ -19,6 +19,12 @@ public class Rectangle extends Rectangle2D {
         this.height = height;
     }
 
+    public Rectangle(double x, double y, double width, double height, int color) {
+        this.x = x;
+        this.y = y;
+        this.width = width;
+        this.height = height;
+    }
 
     @Override
     public void setRect(double x, double y, double w, double h) {
