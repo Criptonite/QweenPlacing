@@ -3,7 +3,7 @@ package objects;
 import java.awt.geom.Point2D;
 
 /**
- * Created by Daniil on 21.06.2017.
+ * Created by Ruslan on 21.06.2017.
  */
 public class Point extends Point2D {
 
