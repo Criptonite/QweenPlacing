@@ -9,7 +9,7 @@ import objects.GraphPanel;
  */
 public class Backtracking implements Runnable {
 
-    private static final long RENDER_DELAY = 800;
+    private static final long RENDER_DELAY = 100;
 
     private Desk desk;
     private Cell[][] matrix;

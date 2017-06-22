@@ -1,2 +1,2 @@
 # QweenPlacing
-University practic work
+University practical work
