@@ -20,19 +20,19 @@ public class Backtracking {
         int descSize = (int) Math.sqrt(matrix.length); //хз что здесь
         //horisont
         for(int i = 0; i < descSize; i++){
-            matrix[row][i].setEmployment(matrix[row][i].getEmployment()+1);
+            matrix[row][i].occupied();
         }
 
         //vertical
         for(int i = 0; i < descSize; i++){
-            matrix[i][col].setEmployment(matrix[i][col].getEmployment()+1);
+            matrix[i][col].occupied();
         }
         int diagY = row;
         int diagX = col;
 
         //north-west
         while(diagX >= 0 && diagY >= 0){
-            matrix[diagY][diagX].setEmployment(matrix[diagY][diagX].getEmployment()+1);
+            matrix[diagY][diagX].occupied();
             diagX--;
             diagY--;
         }
@@ -40,7 +40,7 @@ public class Backtracking {
         diagY = row;
         diagX = col;
         while(diagX >= 0 && diagY < descSize){
-            matrix[diagY][diagX].setEmployment(matrix[diagY][diagX].getEmployment()+1);
+            matrix[diagY][diagX].occupied();
             diagX--;
             diagY++;
         }
@@ -49,7 +49,7 @@ public class Backtracking {
         diagY = row;
         diagX = col;
         while(diagX < descSize && diagY >= 0){
-            matrix[diagY][diagX].setEmployment(matrix[diagY][diagX].getEmployment()+1);
+            matrix[diagY][diagX].occupied();
             diagX++;
             diagY--;
         }
@@ -59,11 +59,11 @@ public class Backtracking {
         diagY = row;
         diagX = col;
         while(diagX < descSize && diagY < descSize){
-            matrix[diagY][diagX].setEmployment(matrix[diagY][diagX].getEmployment()+1);
+            matrix[diagY][diagX].occupied();
             diagX++;
             diagY++;
         }
-        matrix[row][col].setEmployment(-1);
+        matrix[row][col].setOccupiedDegree(-1);
         //drawDesk(this->matrix);
     }
 
@@ -71,19 +71,19 @@ public class Backtracking {
         int descSize = (int) Math.sqrt(matrix.length);
         //horisont
         for(int i = 0; i < descSize; i++){
-            matrix[row][i].setEmployment(matrix[row][i].getEmployment()-1);
+            matrix[row][i].free();
         }
 
         //vertical
         for(int i = 0; i < descSize; i++){
-            matrix[i][col].setEmployment(matrix[i][col].getEmployment()-1);
+            matrix[i][col].free();
         }
         int diagY = row;
         int diagX = col;
 
         //north-west
         while(diagX >= 0 && diagY >= 0){
-            matrix[diagY][diagX].setEmployment(matrix[diagY][diagX].getEmployment()-1);
+            matrix[diagY][diagX].free();
             diagX--;
             diagY--;
         }
@@ -91,7 +91,7 @@ public class Backtracking {
         diagY = row;
         diagX = col;
         while(diagX >= 0 && diagY < descSize){
-            matrix[diagY][diagX].setEmployment(matrix[diagY][diagX].getEmployment()-1);
+            matrix[diagY][diagX].free();
             diagX--;
             diagY++;
         }
@@ -100,7 +100,7 @@ public class Backtracking {
         diagY = row;
         diagX = col;
         while(diagX < descSize && diagY >= 0){
-            matrix[diagY][diagX].setEmployment(matrix[diagY][diagX].getEmployment()-1);
+            matrix[diagY][diagX].free();
             diagX++;
             diagY--;
         }
@@ -110,11 +110,11 @@ public class Backtracking {
         diagY = row;
         diagX = col;
         while(diagX < descSize && diagY < descSize){
-            matrix[diagY][diagX].setEmployment(matrix[diagY][diagX].getEmployment()-1);
+            matrix[diagY][diagX].free();
             diagX++;
             diagY++;
         }
-        matrix[row][col].setEmployment(0);
+        matrix[row][col].setOccupiedDegree(0);
         //drawDesk(this->matrix);
     }
 
@@ -122,7 +122,7 @@ public class Backtracking {
         if(num == (size)) range++;
         if(row == size || col == size) return;
         for(int i = 0; i < size; i++){
-            if(matrix[row][i].getEmployment() == 0){
+            if(matrix[row][i].isFree()){
                 //delay();
                 setQween(row, i);
                 num++;
@@ -136,28 +136,28 @@ public class Backtracking {
 
     }
 
-    public boolean checkQween(int row, int col, int size){
-        for(int i = 0; i < row; i++){
-            if(matrix[i][col].getEmployment() == -1){
-                return false;
-            }
-        }
-
-        for(int i = 1; i <= row && col-i >= 0; ++i)
-        {
-            if(matrix[row-i][col-i].getEmployment() == -1)
-            {
-                return false;
-            }
-        }
-
-        for(int i = 1; i <= row && col+i < size; i++)
-        {
-            if(matrix[row-i][col+i].getEmployment() == -1)
-            {
-                return false;
-            }
-        }
-        return true;
-    }
+//    public boolean checkQween(int row, int col, int size){
+//        for(int i = 0; i < row; i++){
+//            if(matrix[i][col].getEmployment() == -1){
+//                return false;
+//            }
+//        }
+//
+//        for(int i = 1; i <= row && col-i >= 0; ++i)
+//        {
+//            if(matrix[row-i][col-i].getEmployment() == -1)
+//            {
+//                return false;
+//            }
+//        }
+//
+//        for(int i = 1; i <= row && col+i < size; i++)
+//        {
+//            if(matrix[row-i][col+i].getEmployment() == -1)
+//            {
+//                return false;
+//            }
+//        }
+//        return true;
+//    }
 }
