@@ -9,6 +9,7 @@ import java.awt.*;
 public class Cell extends Rectangle {
 
     private Color color;
+    private Color standardColor;
 
     private int employment;
 
