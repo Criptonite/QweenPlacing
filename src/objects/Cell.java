@@ -9,8 +9,20 @@ import java.awt.*;
 public class Cell extends Rectangle {
 
     private Color color;
-    private Color standardColor;
-    private int occupiedDegree;
+
+    private int employment;
+
+    public Color getColor() {
+        return color;
+    }
+
+    public int getEmployment() {
+        return employment;
+    }
+
+    public void setEmployment(int employment) {
+        this.employment = employment;
+    }
 
     public Cell(double x, double y, double size, int color) {
         super(x, y, size, size);
@@ -23,55 +35,7 @@ public class Cell extends Rectangle {
 
         } else {
             this.color = new Color(239, 224, 184);
-            this.standardColor = new Color(239, 224, 184);
         }
+        employment = 0;
     }
-
-    /**
-     * Change cell color if occupied
-     */
-    private void makeOccupied(){
-        color = new Color(0, 0, 255, 150);
-    }
-
-    /**
-     * Change back standard color
-     */
-    private void makeFree(){
-        color = standardColor;
-    }
-
-    public Color getColor() {
-        return color;
-    }
-
-    public void setColor(Color color) {
-        this.color = color;
-    }
-
-    /**
-     * Occupied indicator
-     * @return true if cell is free
-     */
-    public boolean isFree() {
-        return occupiedDegree == 0;
-    }
-
-    /**
-     * Increment field each time cell occupied
-     */
-    public void occupied() {
-        occupiedDegree++;
-        makeOccupied();
-    }
-
-    /**
-     * Decrement field each time cell free
-     */
-    public void free() {
-        if (occupiedDegree > 0) occupiedDegree--;
-        if (occupiedDegree == 0) makeFree();
-    }
-
-
 }
