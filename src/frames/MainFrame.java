@@ -107,7 +107,7 @@ public class MainFrame extends JFrame {
 
 
         //Create spinner
-        sizeSpinner = new JSpinner(new SpinnerNumberModel(4, 0, 64, 1));
+        sizeSpinner = new JSpinner(new SpinnerNumberModel(4, 4, 64, 1));
         sizeSpinner.setMinimumSize(spinnerMinDimension);
         sizeSpinner.setMaximumSize(spinnerMaxDimension);
         sizeSpinner.setPreferredSize(spinnerPreferredDimension);

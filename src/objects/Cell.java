@@ -11,14 +11,9 @@ public class Cell extends Rectangle {
     private Color color;
     private Color standardColor;
 
-    /*Need to change to another method, using in Bactracking 117,66*/
-
-    public void setOccupiedDegree(int occupiedDegree) {
-        this.occupiedDegree = occupiedDegree;
-    }
-
     private int occupiedDegree;
 
+    /*Need to change to another method, using in Bactracking 117,66*/
 
     public Cell(double x, double y, double size, int color) {
         super(x, y, size, size);
@@ -31,8 +26,15 @@ public class Cell extends Rectangle {
 
         } else {
             this.color = new Color(239, 224, 184);
+            this.standardColor = new Color(239, 224, 184);
         }
         occupiedDegree = 0;
+    }
+
+
+    public void setOccupiedDegree(int occupiedDegree) {
+        this.occupiedDegree = occupiedDegree;
+        if(occupiedDegree == 0) makeFree();
     }
     /**
      * Change cell color if occupied

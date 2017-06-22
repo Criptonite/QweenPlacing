@@ -11,10 +11,9 @@ import java.io.IOException;
 /**
  * Created by Daniil on 21.06.2017.
  * Extended by Dmitriy on 21.06.2017.
- *
- *
+ * <p>
+ * <p>
  * Class will redraw itself when it'is necessary.
- *
  */
 public class Desk {
 
@@ -22,6 +21,7 @@ public class Desk {
     private BufferedImage qweenImage;
     private int size;
     private double cellSize;
+    Graphics2D graphics2D;
 
 
     private Cell[][] cellMatrix;
@@ -49,14 +49,15 @@ public class Desk {
         }
     }
 
-    public Desk(int size, GraphPanel graphPanel) {
+    public Desk(int size, GraphPanel graphPanel, Graphics2D graphics2D) {
         this.size = size;
         this.graphPanel = graphPanel;
+        this.graphics2D = graphics2D;
         this.cellSize = graphPanel.getWidth() / size;
         cellMatrix = new Cell[size][size];
         fillMatrix();
         try {
-            qweenImage = resize(ImageIO.read(new File("C:\\Users\\Daniil\\IdeaProjects\\Practice_GUI\\resources\\images\\qween.png")),
+            qweenImage = resize(ImageIO.read(new File("C:\\QweenPlacing\\resources\\images\\qween.png")),
                     (int) cellSize,
                     (int) cellSize);
         } catch (IOException e) {
@@ -66,6 +67,7 @@ public class Desk {
 
     /**
      * Matrix getter for backtracking
+     *
      * @return cellMatrix metrix of cells
      */
     public Cell[][] getCellMatrix() {
@@ -74,15 +76,34 @@ public class Desk {
 
     /**
      * Method painting desk
-     * @param graphics2D graphics provider
+     *
+     *
      */
-    public void paintDesk(Graphics2D graphics2D) {
+    public void paintDesk() {
         for (int i = 0; i < size; i++) {
             for (int j = 0; j < size; j++) {
                 drawElement(graphics2D, i, j);
             }
         }
-        if (qweenImage != null) graphics2D.drawImage(qweenImage, 0, 0, graphPanel);
+        cellMatrix[1][1].occupied();
+        updateDesk();
+        //if (qweenImage != null) graphics2D.drawImage(qweenImage, 0, 0, graphPanel);
+    }
+
+
+    public void updateDesk() {
+        for (int i = 0; i < size; i++) {
+            for (int j = 0; j < size; j++) {
+                removeElement(graphics2D, i, j);
+            }
+        }
+
+        for (int i = 0; i < size; i++) {
+            for (int j = 0; j < size; j++) {
+                drawElement(graphics2D, i, j);
+            }
+        }
+
     }
 
 
@@ -105,12 +126,12 @@ public class Desk {
         return image;
     }
 
-
     /**
      * Method used for drawing cells in one string
+     *
      * @param graphics2D graphic provider
-     * @param i index of raw
-     * @param j index of coll
+     * @param i          index of raw
+     * @param j          index of coll
      */
     private void drawElement(Graphics2D graphics2D, int i, int j) {
         graphics2D.setColor(cellMatrix[i][j].getColor());
@@ -118,11 +139,13 @@ public class Desk {
         graphics2D.draw(cellMatrix[i][j]);
     }
 
+
     /**
      * Method to remove cell from desk
+     *
      * @param graphics2D graphic provider
-     * @param i index of raw
-     * @param j index of coll
+     * @param i          index of raw
+     * @param j          index of coll
      */
     private void removeElement(Graphics2D graphics2D, int i, int j) {
         Cell cell = cellMatrix[i][j];
@@ -130,23 +153,23 @@ public class Desk {
     }
 
 
-    /**
-     * Method to remove cell from desk
-     * @param graphics2D graphic provider
-     * @param color new cell color
-     * @param i index of raw
-     * @param j index of coll
-     */
-    private void changeCellCollor(Graphics2D graphics2D, Color color, int i, int j) {
-        Cell cell = cellMatrix[i][j];
-        cell.setColor(color);
-        removeElement(graphics2D, i, j);
-        drawElement(graphics2D, i, j);
-    }
-
-
-    //Here will be implemented backtracking later........
-    public void searchSolutions(Graphics2D graphics2D) {
+    public void searchSolutions() {
         backtracking = new Backtracking(this);
+        backtracking.tryQween(0, 0, size, 0);
     }
+
+    //    /**
+//     * Method to remove cell from desk
+//     * @param graphics2D graphic provider
+//     * @param color new cell color
+//     * @param i index of raw
+//     * @param j index of coll
+//     */
+//    private void changeCellCollor(Graphics2D graphics2D, Color color, int i, int j) {
+//        Cell cell = cellMatrix[i][j];
+//        cell.setColor(color);
+//        removeElement(graphics2D, i, j);
+//        drawElement(graphics2D, i, j);
+
+
 }

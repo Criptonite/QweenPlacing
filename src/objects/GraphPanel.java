@@ -24,15 +24,15 @@ public class GraphPanel extends JPanel {
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
         graphics = (Graphics2D) g;
-        desk = new Desk(frame.getSpinnerValue(), this);
-        desk.paintDesk(graphics);
+        desk = new Desk(frame.getSpinnerValue(), this, graphics);
+        desk.paintDesk();
     }
 
     /**
      * Entry point to algorithm visualizing
      */
     public void searchSolutions() {
-        desk.searchSolutions(graphics);
+        desk.searchSolutions();
     }
 
 
