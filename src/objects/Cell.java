@@ -10,6 +10,7 @@ public class Cell extends Rectangle {
 
     private Color color;
     private Color standardColor;
+    private boolean queen;
 
     private int occupiedDegree;
 
@@ -19,13 +20,16 @@ public class Cell extends Rectangle {
         if (color == -1) {
             this.color = new Color(0, 0, 255, 150);
             this.standardColor = new Color(0, 0, 255, 150);
+            queen = true;
         } else if (color % 2 == 0) {
             this.color = new Color(160, 84, 49);
             this.standardColor = new Color(160, 84, 49);
+            queen = false;
 
         } else {
             this.color = new Color(239, 224, 184);
             this.standardColor = new Color(239, 224, 184);
+            queen = false;
         }
         occupiedDegree = 0;
     }
@@ -81,5 +85,18 @@ public class Cell extends Rectangle {
         if (occupiedDegree == 0) makeFree();
     }
 
+    public void makeQueen(){
+        queen = true;
+        occupied();
+    }
+
+    public void unMakeQueen(){
+        queen = false;
+        free();
+    }
+
+    public boolean isQueen(){
+        return queen;
+    }
 
 }

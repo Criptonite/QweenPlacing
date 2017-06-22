@@ -57,7 +57,7 @@ public class Desk {
         cellMatrix = new Cell[size][size];
         fillMatrix();
         try {
-            qweenImage = resize(ImageIO.read(new File("C:\\QweenPlacing\\resources\\images\\qween.png")),
+            qweenImage = resize(ImageIO.read(new File("C:\\Users\\Daniil\\IdeaProjects\\Practice_GUI\\resources\\images\\qween.png")),
                     (int) cellSize,
                     (int) cellSize);
         } catch (IOException e) {
@@ -85,7 +85,6 @@ public class Desk {
                 drawElement(i, j);
             }
         }
-        //if (qweenImage != null) graphics2D.drawImage(qweenImage, 0, 0, graphPanel);
     }
 
 
@@ -131,9 +130,13 @@ public class Desk {
      * @param j          index of coll
      */
     private void drawElement(int i, int j) {
-        graphics2D.setColor(cellMatrix[i][j].getColor());
-        graphics2D.fill(cellMatrix[i][j]);
-        graphics2D.draw(cellMatrix[i][j]);
+        Cell cell = cellMatrix[i][j];
+        graphics2D.setColor(cell.getColor());
+        graphics2D.fill(cell);
+        graphics2D.draw(cell);
+        if (qweenImage != null)
+            if(cell.isQueen())
+                graphics2D.drawImage(qweenImage, (int)cell.getX(), (int) cell.getY(), graphPanel);
     }
 
     public void setSize(int size) {

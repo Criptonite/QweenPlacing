@@ -42,6 +42,4 @@ public class GraphPanel extends JPanel {
     public void searchSolutions() {
         desk.searchSolutions();
     }
-
-
 }

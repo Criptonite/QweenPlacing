@@ -71,7 +71,7 @@ public class Backtracking implements Runnable {
             diagX++;
             diagY++;
         }
-        matrix[row][col].setOccupiedDegree(-1);
+        matrix[row][col].makeQueen();
         //desk.updateDesk();
         panel.updateUI();
     }
@@ -123,7 +123,7 @@ public class Backtracking implements Runnable {
             diagX++;
             diagY++;
         }
-        matrix[row][col].setOccupiedDegree(0);
+        matrix[row][col].unMakeQueen();
         //desk.updateDesk();
         panel.updateUI();
     }
