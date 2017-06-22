@@ -82,11 +82,9 @@ public class Desk {
     public void paintDesk() {
         for (int i = 0; i < size; i++) {
             for (int j = 0; j < size; j++) {
-                drawElement(graphics2D, i, j);
+                drawElement(i, j);
             }
         }
-        cellMatrix[1][1].occupied();
-        updateDesk();
         //if (qweenImage != null) graphics2D.drawImage(qweenImage, 0, 0, graphPanel);
     }
 
@@ -94,13 +92,13 @@ public class Desk {
     public void updateDesk() {
         for (int i = 0; i < size; i++) {
             for (int j = 0; j < size; j++) {
-                removeElement(graphics2D, i, j);
+                removeElement(i, j);
             }
         }
 
         for (int i = 0; i < size; i++) {
             for (int j = 0; j < size; j++) {
-                drawElement(graphics2D, i, j);
+                drawElement(i, j);
             }
         }
 
@@ -129,11 +127,10 @@ public class Desk {
     /**
      * Method used for drawing cells in one string
      *
-     * @param graphics2D graphic provider
      * @param i          index of raw
      * @param j          index of coll
      */
-    private void drawElement(Graphics2D graphics2D, int i, int j) {
+    private void drawElement(int i, int j) {
         graphics2D.setColor(cellMatrix[i][j].getColor());
         graphics2D.fill(cellMatrix[i][j]);
         graphics2D.draw(cellMatrix[i][j]);
@@ -143,11 +140,10 @@ public class Desk {
     /**
      * Method to remove cell from desk
      *
-     * @param graphics2D graphic provider
      * @param i          index of raw
      * @param j          index of coll
      */
-    private void removeElement(Graphics2D graphics2D, int i, int j) {
+    private void removeElement(int i, int j) {
         Cell cell = cellMatrix[i][j];
         graphics2D.clearRect((int) cell.getX(), (int) cell.getY(), (int) cellSize, (int) cellSize);
     }
