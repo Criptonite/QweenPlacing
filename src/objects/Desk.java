@@ -1,5 +1,7 @@
 package objects;
 
+import algorythm.Backtracking;
+
 import javax.imageio.ImageIO;
 import java.awt.*;
 import java.awt.image.BufferedImage;
@@ -20,7 +22,10 @@ public class Desk {
     private BufferedImage qweenImage;
     private int size;
     private double cellSize;
+
+
     private Cell[][] cellMatrix;
+    private Backtracking backtracking;
 
     private GraphPanel graphPanel; //NEED
 
@@ -51,12 +56,20 @@ public class Desk {
         cellMatrix = new Cell[size][size];
         fillMatrix();
         try {
-            qweenImage = resize(ImageIO.read(new File("C:\\QweenPlacing\\resources\\images\\qween.png")),
+            qweenImage = resize(ImageIO.read(new File("C:\\Users\\Daniil\\IdeaProjects\\Practice_GUI\\resources\\images\\qween.png")),
                     (int) cellSize,
                     (int) cellSize);
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    /**
+     * Matrix getter for backtracking
+     * @return cellMatrix metrix of cells
+     */
+    public Cell[][] getCellMatrix() {
+        return cellMatrix;
     }
 
     /**
@@ -134,6 +147,6 @@ public class Desk {
 
     //Here will be implemented backtracking later........
     public void searchSolutions(Graphics2D graphics2D) {
-
+        backtracking = new Backtracking(this);
     }
 }

@@ -1,18 +1,21 @@
 package algorythm;
 
 import objects.Cell;
+import objects.Desk;
 
 /**
  * Created by Daniil on 22.06.2017.
  */
 public class Backtracking {
 
+    private Desk desk;
     private Cell [][] matrix;
     private int range;
 
 
-    Backtracking (Cell [][] matrix){
-        this.matrix = matrix;
+    public Backtracking (Desk desk){
+        this.desk = desk;
+        this.matrix = desk.getCellMatrix();
         range = 0;
     }
 
