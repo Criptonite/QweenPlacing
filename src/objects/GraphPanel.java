@@ -8,6 +8,8 @@ import java.awt.*;
 /**
  * Created by Daniil on 21.06.2017.
  * Extended by Dmitriy on 22.06.2017.
+ *
+ * Class is accepted signal from frame and marshall it to desk
  */
 public class GraphPanel extends JPanel {
     private MainFrame frame;

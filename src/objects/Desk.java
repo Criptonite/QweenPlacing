@@ -9,15 +9,20 @@ import java.io.IOException;
 /**
  * Created by Daniil on 21.06.2017.
  * Extended by Dmitriy on 21.06.2017.
+ *
+ *
+ * Class will redraw itself when it'is necessary.
+ *
  */
 public class Desk {
 
+    //Image owner needs to be implemented in separate class
     private BufferedImage qweenImage;
     private int size;
     private double cellSize;
     private Cell[][] cellMatrix;
 
-    private GraphPanel graphPanel; //need or not?
+    private GraphPanel graphPanel; //NEED
 
     /**
      * Method initializing cell matrix

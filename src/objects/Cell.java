@@ -9,24 +9,36 @@ import java.awt.*;
 public class Cell extends Rectangle {
 
     private Color color;
+    private Color standardColor;
     private int occupiedDegree;
 
     public Cell(double x, double y, double size, int color) {
         super(x, y, size, size);
         if (color == -1) {
             this.color = new Color(0, 0, 255, 150);
+            this.standardColor = new Color(0, 0, 255, 150);
         } else if (color % 2 == 0) {
             this.color = new Color(160, 84, 49);
+            this.standardColor = new Color(160, 84, 49);
+
         } else {
             this.color = new Color(239, 224, 184);
+            this.standardColor = new Color(239, 224, 184);
         }
     }
 
     /**
      * Change cell color if occupied
      */
-    public void makeOccupied(){
+    private void makeOccupied(){
         color = new Color(0, 0, 255, 150);
+    }
+
+    /**
+     * Change back standard color
+     */
+    private void makeFree(){
+        color = standardColor;
     }
 
     public Color getColor() {
@@ -50,6 +62,7 @@ public class Cell extends Rectangle {
      */
     public void occupied() {
         occupiedDegree++;
+        makeOccupied();
     }
 
     /**
@@ -57,6 +70,7 @@ public class Cell extends Rectangle {
      */
     public void free() {
         if (occupiedDegree > 0) occupiedDegree--;
+        if (occupiedDegree == 0) makeFree();
     }
 
 
