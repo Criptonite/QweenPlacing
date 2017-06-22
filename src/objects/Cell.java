@@ -13,7 +13,6 @@ public class Cell extends Rectangle {
 
     private int occupiedDegree;
 
-    /*Need to change to another method, using in Bactracking 117,66*/
 
     public Cell(double x, double y, double size, int color) {
         super(x, y, size, size);

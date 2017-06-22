@@ -101,7 +101,7 @@ public class Desk {
                 drawElement(i, j);
             }
         }
-
+        graphPanel.updateUI();
     }
 
 
@@ -136,6 +136,13 @@ public class Desk {
         graphics2D.draw(cellMatrix[i][j]);
     }
 
+    public void setSize(int size) {
+        this.size = size;
+    }
+
+    public void setGraphics2D(Graphics2D graphics2D) {
+        this.graphics2D = graphics2D;
+    }
 
     /**
      * Method to remove cell from desk
@@ -150,8 +157,9 @@ public class Desk {
 
 
     public void searchSolutions() {
-        backtracking = new Backtracking(this);
-        backtracking.tryQween(0, 0, size, 0);
+        backtracking = new Backtracking(this, graphPanel);
+        Thread backtrackingTask = new Thread(backtracking);
+        backtrackingTask.start();
     }
 
     //    /**

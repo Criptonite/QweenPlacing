@@ -2,21 +2,24 @@ package algorythm;
 
 import objects.Cell;
 import objects.Desk;
+import objects.GraphPanel;
 
 /**
  * Created by Daniil on 22.06.2017.
  */
-public class Backtracking {
+public class Backtracking implements Runnable {
 
     private static final long RENDER_DELAY = 800;
 
     private Desk desk;
     private Cell[][] matrix;
     private int range;
+    private GraphPanel panel;
 
 
-    public Backtracking(Desk desk) {
+    public Backtracking(Desk desk, GraphPanel panel) {
         this.desk = desk;
+        this.panel = panel;
         this.matrix = desk.getCellMatrix();
         range = 0;
     }
@@ -69,7 +72,8 @@ public class Backtracking {
             diagY++;
         }
         matrix[row][col].setOccupiedDegree(-1);
-        desk.updateDesk();
+        //desk.updateDesk();
+        panel.updateUI();
     }
 
     public void removeQween(int row, int col) {
@@ -120,7 +124,8 @@ public class Backtracking {
             diagY++;
         }
         matrix[row][col].setOccupiedDegree(0);
-        desk.updateDesk();
+        //desk.updateDesk();
+        panel.updateUI();
     }
 
     public void tryQween(int row, int col, int size, int num) {
@@ -149,6 +154,11 @@ public class Backtracking {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
+    }
+
+    @Override
+    public void run() {
+        tryQween(0, 0, matrix.length, 0);
     }
 
 //    public boolean checkQween(int row, int col, int size){
