@@ -198,14 +198,15 @@ public class MainFrame extends JFrame {
     }
 
 
-    //Throwing exceptions ont know why......
+
     private class MenuBarListener implements MenuListener {
 
         @Override
         public void menuSelected(MenuEvent e) {
-            JMenu temp = (JMenu) e.getSource();
+            Object obj = e.getSource();
+            JMenu temp = (JMenu)obj;
             if(temp == null) return;
-            String menuName = temp.getName();
+            String menuName = temp.getText();
             if (menuName.equals("Save")) {
                 saveAction();
             } else if (menuName.equals("Open")) {
