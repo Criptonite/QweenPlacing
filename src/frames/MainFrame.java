@@ -8,11 +8,16 @@ import javax.swing.border.CompoundBorder;
 import javax.swing.border.EmptyBorder;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
+import javax.swing.event.MenuEvent;
+import javax.swing.event.MenuListener;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 
 /**
  * Created by Dmitriy on 21.06.2017.
+ * Extended by Daniil on 21.06.2017.
  */
 public class MainFrame extends JFrame {
 
@@ -30,13 +35,24 @@ public class MainFrame extends JFrame {
 
     private GraphPanel graphPanel;
 
+    private JMenuBar menuBar;
+
+    private JMenu openMenu;
+
+    private JMenu saveMenu;
+
+    private JMenu infoMenu;
+
 
     public MainFrame() {
         super();
         setTitle("Queen Placing v 0.1");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setSize(600, 400);
+        setMinimumSize(new Dimension(800, 450));
         getContentPane().setLayout(new BoxLayout(getContentPane(), BoxLayout.X_AXIS));
+
+        initMenuBar();
+
 
         //Create standart dimensions
         //Left panel dimension
@@ -121,6 +137,12 @@ public class MainFrame extends JFrame {
         startButton.setMinimumSize(buttonMinDimension);
         startButton.setMaximumSize(buttonMaxDimension);
         startButton.setPreferredSize(buttonPreferredDimension);
+        startButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                graphPanel.searchSolutions();
+            }
+        });
 
         nextButton = new JButton("Next");
         nextButton.setEnabled(false);
@@ -156,9 +178,68 @@ public class MainFrame extends JFrame {
 
 
         getContentPane().add(rightPanel);
+
+        setJMenuBar(menuBar);
+    }
+
+    private void initMenuBar() {
+        menuBar = new JMenuBar();
+        MenuListener listener = new MenuBarListener();
+        saveMenu = new JMenu("Save");
+        saveMenu.addMenuListener(listener);
+        openMenu = new JMenu("Open");
+        openMenu.addMenuListener(listener);
+        infoMenu = new JMenu("Info");
+        infoMenu.addMenuListener(listener);
+
+        menuBar.add(saveMenu);
+        menuBar.add(openMenu);
+        menuBar.add(infoMenu);
+    }
+
+
+
+    private class MenuBarListener implements MenuListener {
+
+        @Override
+        public void menuSelected(MenuEvent e) {
+            Object obj = e.getSource();
+            JMenu temp = (JMenu)obj;
+            if(temp == null) return;
+            String menuName = temp.getText();
+            if (menuName.equals("Save")) {
+                saveAction();
+            } else if (menuName.equals("Open")) {
+                openAction();
+
+            } else if (menuName.equals("Info")) {
+                infoAction();
+            }
+        }
+
+        @Override
+        public void menuDeselected(MenuEvent e) {
+            //DO NOTHING
+        }
+
+        @Override
+        public void menuCanceled(MenuEvent e) {
+            //DO NOTHING
+        }
     }
 
     public int getSpinnerValue() {
         return (int) sizeSpinner.getValue();
+    }
+
+
+    //Will be use for implementing menu behavior. Will be implemented later
+    private void saveAction() {
+    }
+
+    private void openAction() {
+    }
+
+    private void infoAction() {
     }
 }

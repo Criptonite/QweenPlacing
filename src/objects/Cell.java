@@ -4,11 +4,11 @@ import java.awt.*;
 
 /**
  * Created by Daniil on 21.06.2017.
+ * Extend by Ruslan on 22.06.2017.
  */
 public class Cell extends Rectangle {
 
     private Color color;
-
 
     private int employment;
 
@@ -28,8 +28,11 @@ public class Cell extends Rectangle {
         super(x, y, size, size);
         if (color == -1) {
             this.color = new Color(0, 0, 255, 150);
+            this.standardColor = new Color(0, 0, 255, 150);
         } else if (color % 2 == 0) {
             this.color = new Color(160, 84, 49);
+            this.standardColor = new Color(160, 84, 49);
+
         } else {
             this.color = new Color(239, 224, 184);
         }
