@@ -275,47 +275,8 @@ public class MainFrame extends JFrame {
     }
 
 
-    public JLabel getSizeLabel() {
-        return sizeLabel;
-    }
-
-    public JButton getStartButton() {
-        return startButton;
-    }
-
     public JButton getNextButton() {
         return nextButton;
     }
 
-    public JButton getPreButton() {
-        return preButton;
-    }
-
-    public JPanel getRightPanel() {
-        return rightPanel;
-    }
-
-    public JSpinner getSizeSpinner() {
-        return sizeSpinner;
-    }
-
-    public GraphPanel getGraphPanel() {
-        return graphPanel;
-    }
-
-    public JMenu getOpenMenu() {
-        return openMenu;
-    }
-
-    public JMenu getSaveMenu() {
-        return saveMenu;
-    }
-
-    public JMenu getInfoMenu() {
-        return infoMenu;
-    }
-
-    public int getIndex() {
-        return index;
-    }
 }

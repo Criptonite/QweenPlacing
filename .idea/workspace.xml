@@ -3,6 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="9b2f8e4a-55c7-4969-aefd-288716f13382" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/frames/MainFrame.java" afterPath="$PROJECT_DIR$/src/frames/MainFrame.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path=".idea/dataSources.local.xml" />
@@ -60,8 +61,8 @@
       <file leaf-file-name="MainFrame.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/frames/MainFrame.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="384">
-              <caret line="185" column="28" selection-start-line="185" selection-start-column="28" selection-end-line="185" selection-end-column="28" />
+            <state relative-caret-position="703">
+              <caret line="273" column="31" selection-start-line="273" selection-start-column="31" selection-end-line="273" selection-end-column="31" />
               <folding>
                 <element signature="e#3969#3970#0" expanded="true" />
                 <element signature="e#4022#4023#0" expanded="true" />
@@ -69,28 +70,8 @@
                 <element signature="e#5058#5059#0" expanded="true" />
                 <element signature="e#8764#8765#0" expanded="true" />
                 <element signature="e#8815#8816#0" expanded="true" />
-                <element signature="e#9047#9048#0" expanded="true" />
-                <element signature="e#9079#9080#0" expanded="true" />
-                <element signature="e#9118#9119#0" expanded="true" />
-                <element signature="e#9152#9153#0" expanded="true" />
-                <element signature="e#9190#9191#0" expanded="true" />
-                <element signature="e#9223#9224#0" expanded="true" />
-                <element signature="e#9260#9261#0" expanded="true" />
-                <element signature="e#9292#9293#0" expanded="true" />
-                <element signature="e#9329#9330#0" expanded="true" />
-                <element signature="e#9362#9363#0" expanded="true" />
-                <element signature="e#9402#9403#0" expanded="true" />
-                <element signature="e#9436#9437#0" expanded="true" />
-                <element signature="e#9477#9478#0" expanded="true" />
-                <element signature="e#9510#9511#0" expanded="true" />
-                <element signature="e#9544#9545#0" expanded="true" />
-                <element signature="e#9575#9576#0" expanded="true" />
-                <element signature="e#9609#9610#0" expanded="true" />
-                <element signature="e#9640#9641#0" expanded="true" />
-                <element signature="e#9674#9675#0" expanded="true" />
-                <element signature="e#9705#9706#0" expanded="true" />
-                <element signature="e#9734#9735#0" expanded="true" />
-                <element signature="e#9762#9763#0" expanded="true" />
+                <element signature="e#9049#9050#0" expanded="true" />
+                <element signature="e#9082#9083#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -141,7 +122,7 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
     <push-targets>
-      <push-target-info repo="$PROJECT_DIR$" source="master" target-remote="origin" target-branch="master" />
+      <push-target-info repo="$PROJECT_DIR$" source="master" target-remote="origin" target-branch="qween_alg" />
     </push-targets>
   </component>
   <component name="GradleLocalSettings">
@@ -206,110 +187,7 @@
         <subPane subId="Project Files" />
       </pane>
       <pane id="ProjectPane">
-        <subPane>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="QweenPlacing" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="QweenPlacing" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="QweenPlacing" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="QweenPlacing" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="QweenPlacing" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="QweenPlacing" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="QweenPlacing" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="objects" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="QweenPlacing" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="QweenPlacing" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="frames" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="QweenPlacing" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="QweenPlacing" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="algorythm" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="QweenPlacing" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="QweenPlacing" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="resources" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="images" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-        </subPane>
+        <subPane />
       </pane>
       <pane id="Scratches" />
       <pane id="PackagesPane">
@@ -1589,11 +1467,18 @@
       <option name="project" value="LOCAL" />
       <updated>1498238020718</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="Fixed problems with buttons">
+      <created>1498238176064</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1498238176064</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="36731000" />
+    <option name="totallyTimeSpent" value="38005000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-9" y="-9" width="1938" height="1098" extended-state="6" />
@@ -1807,28 +1692,8 @@
             <element signature="e#5058#5059#0" expanded="true" />
             <element signature="e#8764#8765#0" expanded="true" />
             <element signature="e#8815#8816#0" expanded="true" />
-            <element signature="e#9047#9048#0" expanded="true" />
-            <element signature="e#9079#9080#0" expanded="true" />
-            <element signature="e#9118#9119#0" expanded="true" />
-            <element signature="e#9152#9153#0" expanded="true" />
-            <element signature="e#9190#9191#0" expanded="true" />
-            <element signature="e#9223#9224#0" expanded="true" />
-            <element signature="e#9260#9261#0" expanded="true" />
-            <element signature="e#9292#9293#0" expanded="true" />
-            <element signature="e#9329#9330#0" expanded="true" />
-            <element signature="e#9362#9363#0" expanded="true" />
-            <element signature="e#9402#9403#0" expanded="true" />
-            <element signature="e#9436#9437#0" expanded="true" />
-            <element signature="e#9477#9478#0" expanded="true" />
-            <element signature="e#9510#9511#0" expanded="true" />
-            <element signature="e#9544#9545#0" expanded="true" />
-            <element signature="e#9575#9576#0" expanded="true" />
-            <element signature="e#9609#9610#0" expanded="true" />
-            <element signature="e#9640#9641#0" expanded="true" />
-            <element signature="e#9674#9675#0" expanded="true" />
-            <element signature="e#9705#9706#0" expanded="true" />
-            <element signature="e#9734#9735#0" expanded="true" />
-            <element signature="e#9762#9763#0" expanded="true" />
+            <element signature="e#9049#9050#0" expanded="true" />
+            <element signature="e#9082#9083#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1883,28 +1748,8 @@
             <element signature="e#5058#5059#0" expanded="true" />
             <element signature="e#8764#8765#0" expanded="true" />
             <element signature="e#8815#8816#0" expanded="true" />
-            <element signature="e#9047#9048#0" expanded="true" />
-            <element signature="e#9079#9080#0" expanded="true" />
-            <element signature="e#9118#9119#0" expanded="true" />
-            <element signature="e#9152#9153#0" expanded="true" />
-            <element signature="e#9190#9191#0" expanded="true" />
-            <element signature="e#9223#9224#0" expanded="true" />
-            <element signature="e#9260#9261#0" expanded="true" />
-            <element signature="e#9292#9293#0" expanded="true" />
-            <element signature="e#9329#9330#0" expanded="true" />
-            <element signature="e#9362#9363#0" expanded="true" />
-            <element signature="e#9402#9403#0" expanded="true" />
-            <element signature="e#9436#9437#0" expanded="true" />
-            <element signature="e#9477#9478#0" expanded="true" />
-            <element signature="e#9510#9511#0" expanded="true" />
-            <element signature="e#9544#9545#0" expanded="true" />
-            <element signature="e#9575#9576#0" expanded="true" />
-            <element signature="e#9609#9610#0" expanded="true" />
-            <element signature="e#9640#9641#0" expanded="true" />
-            <element signature="e#9674#9675#0" expanded="true" />
-            <element signature="e#9705#9706#0" expanded="true" />
-            <element signature="e#9734#9735#0" expanded="true" />
-            <element signature="e#9762#9763#0" expanded="true" />
+            <element signature="e#9049#9050#0" expanded="true" />
+            <element signature="e#9082#9083#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1937,28 +1782,8 @@
             <element signature="e#5058#5059#0" expanded="true" />
             <element signature="e#8764#8765#0" expanded="true" />
             <element signature="e#8815#8816#0" expanded="true" />
-            <element signature="e#9047#9048#0" expanded="true" />
-            <element signature="e#9079#9080#0" expanded="true" />
-            <element signature="e#9118#9119#0" expanded="true" />
-            <element signature="e#9152#9153#0" expanded="true" />
-            <element signature="e#9190#9191#0" expanded="true" />
-            <element signature="e#9223#9224#0" expanded="true" />
-            <element signature="e#9260#9261#0" expanded="true" />
-            <element signature="e#9292#9293#0" expanded="true" />
-            <element signature="e#9329#9330#0" expanded="true" />
-            <element signature="e#9362#9363#0" expanded="true" />
-            <element signature="e#9402#9403#0" expanded="true" />
-            <element signature="e#9436#9437#0" expanded="true" />
-            <element signature="e#9477#9478#0" expanded="true" />
-            <element signature="e#9510#9511#0" expanded="true" />
-            <element signature="e#9544#9545#0" expanded="true" />
-            <element signature="e#9575#9576#0" expanded="true" />
-            <element signature="e#9609#9610#0" expanded="true" />
-            <element signature="e#9640#9641#0" expanded="true" />
-            <element signature="e#9674#9675#0" expanded="true" />
-            <element signature="e#9705#9706#0" expanded="true" />
-            <element signature="e#9734#9735#0" expanded="true" />
-            <element signature="e#9762#9763#0" expanded="true" />
+            <element signature="e#9049#9050#0" expanded="true" />
+            <element signature="e#9082#9083#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1998,28 +1823,8 @@
             <element signature="e#5058#5059#0" expanded="true" />
             <element signature="e#8764#8765#0" expanded="true" />
             <element signature="e#8815#8816#0" expanded="true" />
-            <element signature="e#9047#9048#0" expanded="true" />
-            <element signature="e#9079#9080#0" expanded="true" />
-            <element signature="e#9118#9119#0" expanded="true" />
-            <element signature="e#9152#9153#0" expanded="true" />
-            <element signature="e#9190#9191#0" expanded="true" />
-            <element signature="e#9223#9224#0" expanded="true" />
-            <element signature="e#9260#9261#0" expanded="true" />
-            <element signature="e#9292#9293#0" expanded="true" />
-            <element signature="e#9329#9330#0" expanded="true" />
-            <element signature="e#9362#9363#0" expanded="true" />
-            <element signature="e#9402#9403#0" expanded="true" />
-            <element signature="e#9436#9437#0" expanded="true" />
-            <element signature="e#9477#9478#0" expanded="true" />
-            <element signature="e#9510#9511#0" expanded="true" />
-            <element signature="e#9544#9545#0" expanded="true" />
-            <element signature="e#9575#9576#0" expanded="true" />
-            <element signature="e#9609#9610#0" expanded="true" />
-            <element signature="e#9640#9641#0" expanded="true" />
-            <element signature="e#9674#9675#0" expanded="true" />
-            <element signature="e#9705#9706#0" expanded="true" />
-            <element signature="e#9734#9735#0" expanded="true" />
-            <element signature="e#9762#9763#0" expanded="true" />
+            <element signature="e#9049#9050#0" expanded="true" />
+            <element signature="e#9082#9083#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -2106,28 +1911,8 @@
             <element signature="e#5058#5059#0" expanded="true" />
             <element signature="e#8764#8765#0" expanded="true" />
             <element signature="e#8815#8816#0" expanded="true" />
-            <element signature="e#9047#9048#0" expanded="true" />
-            <element signature="e#9079#9080#0" expanded="true" />
-            <element signature="e#9118#9119#0" expanded="true" />
-            <element signature="e#9152#9153#0" expanded="true" />
-            <element signature="e#9190#9191#0" expanded="true" />
-            <element signature="e#9223#9224#0" expanded="true" />
-            <element signature="e#9260#9261#0" expanded="true" />
-            <element signature="e#9292#9293#0" expanded="true" />
-            <element signature="e#9329#9330#0" expanded="true" />
-            <element signature="e#9362#9363#0" expanded="true" />
-            <element signature="e#9402#9403#0" expanded="true" />
-            <element signature="e#9436#9437#0" expanded="true" />
-            <element signature="e#9477#9478#0" expanded="true" />
-            <element signature="e#9510#9511#0" expanded="true" />
-            <element signature="e#9544#9545#0" expanded="true" />
-            <element signature="e#9575#9576#0" expanded="true" />
-            <element signature="e#9609#9610#0" expanded="true" />
-            <element signature="e#9640#9641#0" expanded="true" />
-            <element signature="e#9674#9675#0" expanded="true" />
-            <element signature="e#9705#9706#0" expanded="true" />
-            <element signature="e#9734#9735#0" expanded="true" />
-            <element signature="e#9762#9763#0" expanded="true" />
+            <element signature="e#9049#9050#0" expanded="true" />
+            <element signature="e#9082#9083#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -2167,28 +1952,8 @@
             <element signature="e#5058#5059#0" expanded="true" />
             <element signature="e#8764#8765#0" expanded="true" />
             <element signature="e#8815#8816#0" expanded="true" />
-            <element signature="e#9047#9048#0" expanded="true" />
-            <element signature="e#9079#9080#0" expanded="true" />
-            <element signature="e#9118#9119#0" expanded="true" />
-            <element signature="e#9152#9153#0" expanded="true" />
-            <element signature="e#9190#9191#0" expanded="true" />
-            <element signature="e#9223#9224#0" expanded="true" />
-            <element signature="e#9260#9261#0" expanded="true" />
-            <element signature="e#9292#9293#0" expanded="true" />
-            <element signature="e#9329#9330#0" expanded="true" />
-            <element signature="e#9362#9363#0" expanded="true" />
-            <element signature="e#9402#9403#0" expanded="true" />
-            <element signature="e#9436#9437#0" expanded="true" />
-            <element signature="e#9477#9478#0" expanded="true" />
-            <element signature="e#9510#9511#0" expanded="true" />
-            <element signature="e#9544#9545#0" expanded="true" />
-            <element signature="e#9575#9576#0" expanded="true" />
-            <element signature="e#9609#9610#0" expanded="true" />
-            <element signature="e#9640#9641#0" expanded="true" />
-            <element signature="e#9674#9675#0" expanded="true" />
-            <element signature="e#9705#9706#0" expanded="true" />
-            <element signature="e#9734#9735#0" expanded="true" />
-            <element signature="e#9762#9763#0" expanded="true" />
+            <element signature="e#9049#9050#0" expanded="true" />
+            <element signature="e#9082#9083#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -2301,8 +2066,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/frames/MainFrame.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="384">
-          <caret line="185" column="28" selection-start-line="185" selection-start-column="28" selection-end-line="185" selection-end-column="28" />
+        <state relative-caret-position="703">
+          <caret line="273" column="31" selection-start-line="273" selection-start-column="31" selection-end-line="273" selection-end-column="31" />
           <folding>
             <element signature="e#3969#3970#0" expanded="true" />
             <element signature="e#4022#4023#0" expanded="true" />
@@ -2310,28 +2075,8 @@
             <element signature="e#5058#5059#0" expanded="true" />
             <element signature="e#8764#8765#0" expanded="true" />
             <element signature="e#8815#8816#0" expanded="true" />
-            <element signature="e#9047#9048#0" expanded="true" />
-            <element signature="e#9079#9080#0" expanded="true" />
-            <element signature="e#9118#9119#0" expanded="true" />
-            <element signature="e#9152#9153#0" expanded="true" />
-            <element signature="e#9190#9191#0" expanded="true" />
-            <element signature="e#9223#9224#0" expanded="true" />
-            <element signature="e#9260#9261#0" expanded="true" />
-            <element signature="e#9292#9293#0" expanded="true" />
-            <element signature="e#9329#9330#0" expanded="true" />
-            <element signature="e#9362#9363#0" expanded="true" />
-            <element signature="e#9402#9403#0" expanded="true" />
-            <element signature="e#9436#9437#0" expanded="true" />
-            <element signature="e#9477#9478#0" expanded="true" />
-            <element signature="e#9510#9511#0" expanded="true" />
-            <element signature="e#9544#9545#0" expanded="true" />
-            <element signature="e#9575#9576#0" expanded="true" />
-            <element signature="e#9609#9610#0" expanded="true" />
-            <element signature="e#9640#9641#0" expanded="true" />
-            <element signature="e#9674#9675#0" expanded="true" />
-            <element signature="e#9705#9706#0" expanded="true" />
-            <element signature="e#9734#9735#0" expanded="true" />
-            <element signature="e#9762#9763#0" expanded="true" />
+            <element signature="e#9049#9050#0" expanded="true" />
+            <element signature="e#9082#9083#0" expanded="true" />
           </folding>
         </state>
       </provider>
