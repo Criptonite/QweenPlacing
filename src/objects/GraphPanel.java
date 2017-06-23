@@ -14,9 +14,10 @@ import java.util.ArrayList;
  */
 public class GraphPanel extends JPanel {
     private MainFrame frame;
-    Graphics2D graphics;
-    Desk desk;
-    int prevSize;
+    private Graphics2D graphics;
+    private Desk desk;
+    private int prevSize;
+    private ArrayList<Cell[][]> combinationsArray;
 
     public GraphPanel(MainFrame frame) {
         this.frame = frame;
@@ -45,11 +46,21 @@ public class GraphPanel extends JPanel {
     }
 
     public void drawCombination(int index){
-        ArrayList<Cell[][]> combinationsArray = desk.getCombinations();
-        if (index == combinationsArray.size()-1){
-            frame.getNextButton().setEnabled(false);
-        }
+        System.out.println(index);
+        combinationsArray = desk.getCombinations();
         desk.setCellMatrix(combinationsArray.get(index));
         this.updateUI();
+    }
+
+    public ArrayList<Cell[][]> getCombinationsArray() {
+        return combinationsArray;
+    }
+
+    public void setCombinationsArray(ArrayList<Cell[][]> combinationsArray) {
+        this.combinationsArray = combinationsArray;
+    }
+
+    public MainFrame getFrame() {
+        return frame;
     }
 }

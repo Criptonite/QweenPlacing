@@ -43,11 +43,14 @@ public class MainFrame extends JFrame {
 
     private JMenu infoMenu;
 
-    private int index=0;
+    private int index = 0;
+
+    private int factor = 0;
 
 
     public MainFrame() {
         super();
+        factor = 1;
         setTitle("Queen Placing v 0.1");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setMinimumSize(new Dimension(800, 450));
@@ -143,7 +146,6 @@ public class MainFrame extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 graphPanel.searchSolutions();
-                nextButton.setEnabled(true);
             }
         });
 
@@ -155,8 +157,14 @@ public class MainFrame extends JFrame {
         nextButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                preButton.setEnabled(true);
+                if (factor == -1 && index == 0) index++;
                 graphPanel.drawCombination(index++);
+                preButton.setEnabled(true);
+                if (index > graphPanel.getCombinationsArray().size() - 1) {
+                    index = graphPanel.getCombinationsArray().size() - 1;
+                    nextButton.setEnabled(false);
+                }
+                factor = 1;
             }
         });
 
@@ -168,11 +176,14 @@ public class MainFrame extends JFrame {
         preButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if(index==0){
+                if (factor == 1 && index == graphPanel.getCombinationsArray().size() - 1) index--;
+                graphPanel.drawCombination(index--);
+                nextButton.setEnabled(true);
+                if (index < 0) {
+                    index = 0;
                     preButton.setEnabled(false);
                 }
-                nextButton.setEnabled(true);
-                graphPanel.drawCombination(index--);
+                factor = -1;
             }
         });
 
@@ -218,14 +229,13 @@ public class MainFrame extends JFrame {
     }
 
 
-
     private class MenuBarListener implements MenuListener {
 
         @Override
         public void menuSelected(MenuEvent e) {
             Object obj = e.getSource();
-            JMenu temp = (JMenu)obj;
-            if(temp == null) return;
+            JMenu temp = (JMenu) obj;
+            if (temp == null) return;
             String menuName = temp.getText();
             if (menuName.equals("Save")) {
                 saveAction();

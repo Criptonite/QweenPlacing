@@ -28,6 +28,7 @@ public class Desk {
     private Cell[][] cellMatrix;
 
     private Backtracking backtracking;
+
     private GraphPanel graphPanel; //NEED
 
     /**
@@ -81,6 +82,7 @@ public class Desk {
         }
     }
 
+
     /**
      * Method used for drawing cells in one string
      *
@@ -112,11 +114,17 @@ public class Desk {
         this.graphics2D = graphics2D;
     }
 
+
     public void searchSolutions() {
         backtracking = new Backtracking(this, graphPanel);
         Thread backtrackingTask = new Thread(backtracking);
         backtrackingTask.start();
 
+    }
+
+    public void notifyPanel(){
+        graphPanel.setCombinationsArray(getCombinations());
+        graphPanel.getFrame().getNextButton().setEnabled(true);
     }
 
 
