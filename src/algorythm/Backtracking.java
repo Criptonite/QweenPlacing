@@ -11,12 +11,11 @@ import java.util.ArrayList;
  */
 public class Backtracking implements Runnable {
 
-    private static final long RENDER_DELAY = 100;
+    private static final long RENDER_DELAY = 50;
 
     private Desk desk;
     private ArrayList<Cell[][]> combinations;
     private Cell[][] matrix;
-    private int range;
     private GraphPanel panel;
 
 
@@ -24,7 +23,6 @@ public class Backtracking implements Runnable {
         this.desk = desk;
         this.combinations = new ArrayList<>();
         this.matrix = desk.getCellMatrix();
-        range = 0;
         this.panel = panel;
     }
 
@@ -134,7 +132,6 @@ public class Backtracking implements Runnable {
 
     public void tryQween(int row, int col, int size, int num) {
         if (num == (size)) {
-            range++;
             addCombination();
         }
         if (row == size || col == size) return;

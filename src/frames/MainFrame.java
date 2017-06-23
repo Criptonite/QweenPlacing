@@ -43,6 +43,8 @@ public class MainFrame extends JFrame {
 
     private JMenu infoMenu;
 
+    private int index=0;
+
 
     public MainFrame() {
         super();
@@ -141,6 +143,7 @@ public class MainFrame extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 graphPanel.searchSolutions();
+                nextButton.setEnabled(true);
             }
         });
 
@@ -149,12 +152,29 @@ public class MainFrame extends JFrame {
         nextButton.setMinimumSize(buttonMinDimension);
         nextButton.setMaximumSize(buttonMaxDimension);
         nextButton.setPreferredSize(buttonPreferredDimension);
+        nextButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                preButton.setEnabled(true);
+                graphPanel.drawCombination(index++);
+            }
+        });
 
         preButton = new JButton("Prev");
         preButton.setEnabled(false);
         preButton.setMinimumSize(buttonMinDimension);
         preButton.setMaximumSize(buttonMaxDimension);
         preButton.setPreferredSize(buttonPreferredDimension);
+        preButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if(index==0){
+                    preButton.setEnabled(false);
+                }
+                nextButton.setEnabled(true);
+                graphPanel.drawCombination(index--);
+            }
+        });
 
         //Add to sub panel
         buttonsSubPanel.add(startButton);
@@ -240,6 +260,52 @@ public class MainFrame extends JFrame {
     private void openAction() {
     }
 
+
     private void infoAction() {
+    }
+
+
+    public JLabel getSizeLabel() {
+        return sizeLabel;
+    }
+
+    public JButton getStartButton() {
+        return startButton;
+    }
+
+    public JButton getNextButton() {
+        return nextButton;
+    }
+
+    public JButton getPreButton() {
+        return preButton;
+    }
+
+    public JPanel getRightPanel() {
+        return rightPanel;
+    }
+
+    public JSpinner getSizeSpinner() {
+        return sizeSpinner;
+    }
+
+    public GraphPanel getGraphPanel() {
+        return graphPanel;
+    }
+
+    public JMenu getOpenMenu() {
+        return openMenu;
+    }
+
+    public JMenu getSaveMenu() {
+        return saveMenu;
+    }
+
+    public JMenu getInfoMenu() {
+        return infoMenu;
+    }
+
+    public int getIndex() {
+        return index;
     }
 }

@@ -7,6 +7,7 @@ import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 
 /**
  * Created by Daniil on 21.06.2017.
@@ -25,8 +26,8 @@ public class Desk {
 
 
     private Cell[][] cellMatrix;
-    private Backtracking backtracking;
 
+    private Backtracking backtracking;
     private GraphPanel graphPanel; //NEED
 
     /**
@@ -80,7 +81,6 @@ public class Desk {
         }
     }
 
-
     /**
      * Method used for drawing cells in one string
      *
@@ -103,6 +103,7 @@ public class Desk {
                 graphics2D.drawImage(qweenImage, (int) cell.getX(), (int) cell.getY(), graphPanel);
     }
 
+
     public void setSize(int size) {
         this.size = size;
     }
@@ -111,12 +112,20 @@ public class Desk {
         this.graphics2D = graphics2D;
     }
 
-
     public void searchSolutions() {
         backtracking = new Backtracking(this, graphPanel);
         Thread backtrackingTask = new Thread(backtracking);
         backtrackingTask.start();
 
+    }
+
+
+    public ArrayList<Cell[][]> getCombinations(){
+        return backtracking.getCombinations();
+    }
+
+    public void setCellMatrix(Cell[][] cellMatrix) {
+        this.cellMatrix = cellMatrix;
     }
 
 }

@@ -4,6 +4,7 @@ import frames.MainFrame;
 
 import javax.swing.*;
 import java.awt.*;
+import java.util.ArrayList;
 
 /**
  * Created by Daniil on 21.06.2017.
@@ -41,5 +42,14 @@ public class GraphPanel extends JPanel {
      */
     public void searchSolutions() {
         desk.searchSolutions();
+    }
+
+    public void drawCombination(int index){
+        ArrayList<Cell[][]> combinationsArray = desk.getCombinations();
+        if (index == combinationsArray.size()-1){
+            frame.getNextButton().setEnabled(false);
+        }
+        desk.setCellMatrix(combinationsArray.get(index));
+        this.updateUI();
     }
 }
