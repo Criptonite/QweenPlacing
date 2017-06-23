@@ -17,7 +17,7 @@ public class Cell extends Rectangle {
 
     public Cell(double x, double y, double size, int color) {
         super(x, y, size, size);
-        if (color == -1) {
+        if (color == -1) {                                          //this IF isn't using, need it?
             this.color = new Color(0, 0, 255, 150);
             this.standardColor = new Color(0, 0, 255, 150);
             queen = true;
@@ -34,10 +34,8 @@ public class Cell extends Rectangle {
         occupiedDegree = 0;
     }
 
-
-    public void setOccupiedDegree(int occupiedDegree) {
-        this.occupiedDegree = occupiedDegree;
-        if(occupiedDegree == 0) makeFree();
+    public Color getStandardColor() {
+        return standardColor;
     }
     /**
      * Change cell color if occupied

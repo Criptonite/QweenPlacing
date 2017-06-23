@@ -87,23 +87,6 @@ public class Desk {
         }
     }
 
-
-    public void updateDesk() {
-        for (int i = 0; i < size; i++) {
-            for (int j = 0; j < size; j++) {
-                removeElement(i, j);
-            }
-        }
-
-        for (int i = 0; i < size; i++) {
-            for (int j = 0; j < size; j++) {
-                drawElement(i, j);
-            }
-        }
-        graphPanel.updateUI();
-    }
-
-
     /**
      * @param img  image to resize
      * @param newW needed width
@@ -131,9 +114,15 @@ public class Desk {
      */
     private void drawElement(int i, int j) {
         Cell cell = cellMatrix[i][j];
+
+        graphics2D.setColor(cell.getStandardColor());
+        graphics2D.fill(cell);
+        graphics2D.draw(cell);
+
         graphics2D.setColor(cell.getColor());
         graphics2D.fill(cell);
         graphics2D.draw(cell);
+
         if (qweenImage != null)
             if(cell.isQueen())
                 graphics2D.drawImage(qweenImage, (int)cell.getX(), (int) cell.getY(), graphPanel);
@@ -145,17 +134,6 @@ public class Desk {
 
     public void setGraphics2D(Graphics2D graphics2D) {
         this.graphics2D = graphics2D;
-    }
-
-    /**
-     * Method to remove cell from desk
-     *
-     * @param i          index of raw
-     * @param j          index of coll
-     */
-    private void removeElement(int i, int j) {
-        Cell cell = cellMatrix[i][j];
-        graphics2D.clearRect((int) cell.getX(), (int) cell.getY(), (int) cellSize, (int) cellSize);
     }
 
 
