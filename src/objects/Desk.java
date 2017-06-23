@@ -71,8 +71,6 @@ public class Desk {
 
     /**
      * Method painting desk
-     *
-     *
      */
     public void paintDesk() {
         for (int i = 0; i < size; i++) {
@@ -86,8 +84,8 @@ public class Desk {
     /**
      * Method used for drawing cells in one string
      *
-     * @param i          index of raw
-     * @param j          index of coll
+     * @param i index of raw
+     * @param j index of coll
      */
     private void drawElement(int i, int j) {
         Cell cell = cellMatrix[i][j];
@@ -101,8 +99,8 @@ public class Desk {
         graphics2D.draw(cell);
 
         if (qweenImage != null)
-            if(cell.isQueen())
-                graphics2D.drawImage(qweenImage, (int)cell.getX(), (int) cell.getY(), graphPanel);
+            if (cell.isQueen())
+                graphics2D.drawImage(qweenImage, (int) cell.getX(), (int) cell.getY(), graphPanel);
     }
 
     public void setSize(int size) {
@@ -118,20 +116,7 @@ public class Desk {
         backtracking = new Backtracking(this, graphPanel);
         Thread backtrackingTask = new Thread(backtracking);
         backtrackingTask.start();
+
     }
-
-    //    /**
-//     * Method to remove cell from desk
-//     * @param graphics2D graphic provider
-//     * @param color new cell color
-//     * @param i index of raw
-//     * @param j index of coll
-//     */
-//    private void changeCellCollor(Graphics2D graphics2D, Color color, int i, int j) {
-//        Cell cell = cellMatrix[i][j];
-//        cell.setColor(color);
-//        removeElement(graphics2D, i, j);
-//        drawElement(graphics2D, i, j);
-
 
 }

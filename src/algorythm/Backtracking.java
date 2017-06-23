@@ -4,6 +4,8 @@ import objects.Cell;
 import objects.Desk;
 import objects.GraphPanel;
 
+import java.util.ArrayList;
+
 /**
  * Created by Daniil on 22.06.2017.
  */
@@ -12,6 +14,7 @@ public class Backtracking implements Runnable {
     private static final long RENDER_DELAY = 100;
 
     private Desk desk;
+    private ArrayList<Cell[][]> combinations;
     private Cell[][] matrix;
     private int range;
     private GraphPanel panel;
@@ -19,9 +22,10 @@ public class Backtracking implements Runnable {
 
     public Backtracking(Desk desk, GraphPanel panel) {
         this.desk = desk;
-        this.panel = panel;
+        this.combinations = new ArrayList<>();
         this.matrix = desk.getCellMatrix();
         range = 0;
+        this.panel = panel;
     }
 
     public void setQween(int row, int col) {
@@ -129,7 +133,10 @@ public class Backtracking implements Runnable {
     }
 
     public void tryQween(int row, int col, int size, int num) {
-        if (num == (size)) range++;
+        if (num == (size)) {
+            range++;
+            addCombination();
+        }
         if (row == size || col == size) return;
         for (int i = 0; i < size; i++) {
             if (matrix[row][i].isFree()) {
@@ -148,6 +155,22 @@ public class Backtracking implements Runnable {
 
     }
 
+    public ArrayList<Cell[][]> getCombinations() {
+        return combinations;
+    }
+
+    private void addCombination() {
+        int size = matrix.length;
+        Cell[][] newCombination = new Cell[size][size];
+        for(int i = 0; i < size; i++){
+            for(int j = 0; j < size; j++){
+                newCombination[i][j] = (Cell) matrix[i][j].clone();
+            }
+        }
+
+        combinations.add(newCombination);
+    }
+
     private void delay(long milis) {
         try {
             Thread.sleep(milis);
@@ -159,30 +182,7 @@ public class Backtracking implements Runnable {
     @Override
     public void run() {
         tryQween(0, 0, matrix.length, 0);
+        System.out.println(combinations.size());
     }
 
-//    public boolean checkQween(int row, int col, int size){
-//        for(int i = 0; i < row; i++){
-//            if(matrix[i][col].getEmployment() == -1){
-//                return false;
-//            }
-//        }
-//
-//        for(int i = 1; i <= row && col-i >= 0; ++i)
-//        {
-//            if(matrix[row-i][col-i].getEmployment() == -1)
-//            {
-//                return false;
-//            }
-//        }
-//
-//        for(int i = 1; i <= row && col+i < size; i++)
-//        {
-//            if(matrix[row-i][col+i].getEmployment() == -1)
-//            {
-//                return false;
-//            }
-//        }
-//        return true;
-//    }
 }

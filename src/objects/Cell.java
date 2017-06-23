@@ -6,7 +6,7 @@ import java.awt.*;
  * Created by Daniil on 21.06.2017.
  * Extend by Ruslan on 22.06.2017.
  */
-public class Cell extends Rectangle {
+public class Cell extends Rectangle implements Cloneable{
 
     private Color color;
     private Color standardColor;
@@ -97,4 +97,13 @@ public class Cell extends Rectangle {
         return queen;
     }
 
+    @Override
+    public Object clone() {
+        Cell newCell = new Cell(this.getX(), this.getY(), this.getWidth() , 0);
+        newCell.color = this.color;
+        newCell.standardColor = this.standardColor;
+        newCell.queen = this.queen;
+        newCell.occupiedDegree = this.occupiedDegree;
+        return newCell;
+    }
 }
