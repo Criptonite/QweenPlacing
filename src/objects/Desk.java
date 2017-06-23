@@ -56,13 +56,8 @@ public class Desk {
         this.cellSize = graphPanel.getWidth() / size;
         cellMatrix = new Cell[size][size];
         fillMatrix();
-        try {
-            qweenImage = resize(ImageIO.read(new File("C:\\Users\\Daniil\\IdeaProjects\\Practice_GUI\\resources\\images\\qween.png")),
-                    (int) cellSize,
-                    (int) cellSize);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        QueenImage img = new QueenImage();
+        qweenImage = img.resize((int) cellSize, (int) cellSize);
     }
 
     /**
@@ -87,24 +82,6 @@ public class Desk {
         }
     }
 
-    /**
-     * @param img  image to resize
-     * @param newW needed width
-     * @param newH heeded height
-     * @return scaled image
-     */
-    private BufferedImage resize(BufferedImage img, int newW, int newH) {
-        BufferedImage image = new BufferedImage(newH, newH, img.getType());
-        int w = img.getWidth();
-        int h = img.getHeight();
-        Graphics2D g = image.createGraphics();
-        g.setRenderingHint(RenderingHints.KEY_INTERPOLATION,
-                RenderingHints.VALUE_INTERPOLATION_BILINEAR);
-        g.drawImage(img, 0, 0, newW, newH, 0, 0, w, h, null);
-        g.dispose();
-
-        return image;
-    }
 
     /**
      * Method used for drawing cells in one string
