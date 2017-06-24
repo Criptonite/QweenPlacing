@@ -1,5 +1,6 @@
 package frames;
 
+import objects.Desk;
 import objects.GraphPanel;
 
 import javax.swing.*;
@@ -119,6 +120,7 @@ public class MainFrame extends JFrame {
         sizeSpinner.addChangeListener(new ChangeListener() {
             @Override
             public void stateChanged(ChangeEvent e) {
+                toStratCondition();
                 graphPanel.updateUI();
             }
         });
@@ -145,7 +147,9 @@ public class MainFrame extends JFrame {
         startButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+               toStratCondition();
                 graphPanel.searchSolutions();
+                graphPanel.updateUI();
             }
         });
 
@@ -277,6 +281,15 @@ public class MainFrame extends JFrame {
 
     public JButton getNextButton() {
         return nextButton;
+    }
+
+    private void toStratCondition (){
+        Desk desk = new Desk((int) sizeSpinner.getValue(), graphPanel,(Graphics2D) graphPanel.getGraphics());
+        graphPanel.setDesk(desk);
+        factor = 1;
+        index = 0;
+        nextButton.setEnabled(false);
+        preButton.setEnabled(false);
     }
 
 }

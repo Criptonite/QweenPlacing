@@ -179,6 +179,7 @@ public class Backtracking implements Runnable, Algorithm {
     @Override
     public void run() {
         combinations.clear();
+
         tryQween(0, 0, matrix.length, 0);
         desk.notifyPanel();
     }

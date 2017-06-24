@@ -14,14 +14,18 @@ import java.util.ArrayList;
  */
 public class GraphPanel extends JPanel {
     private MainFrame frame;
+
     private Graphics2D graphics;
+
+    public void setDesk(Desk desk) {
+        this.desk = desk;
+    }
+
     private Desk desk;
-    private int prevSize;
     private ArrayList<Cell[][]> combinationsArray;
 
     public GraphPanel(MainFrame frame) {
         this.frame = frame;
-        prevSize = 0;
     }
 
     @Override
@@ -29,13 +33,12 @@ public class GraphPanel extends JPanel {
         super.paintComponent(g);
         graphics = (Graphics2D) g;
         int size = frame.getSpinnerValue();
-        if (desk == null || prevSize != size) {
+        if (desk == null) {
             desk = new Desk(size, this, graphics);
         }
         desk.setGraphics2D(graphics);
 
         desk.paintDesk();
-        prevSize = size;
     }
 
     /**
