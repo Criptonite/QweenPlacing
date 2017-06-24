@@ -4,6 +4,7 @@ import java.awt.*;
 
 /**
  * Created by Daniil on 21.06.2017.
+ * Extended by Dmitriy on 23.06.2017.
  * Extend by Ruslan on 22.06.2017.
  */
 public class Cell extends Rectangle implements Cloneable{
@@ -18,8 +19,8 @@ public class Cell extends Rectangle implements Cloneable{
     public Cell(double x, double y, double size, int color) {
         super(x, y, size, size);
         if (color == -1) {                                          //this IF isn't using, need it?
-            this.color = new Color(0, 0, 255, 150);
-            this.standardColor = new Color(0, 0, 255, 150);
+            this.color = new Color(0, 0, 255, 150);                 //OHOHOHO you wrong. It is really
+            this.standardColor = new Color(0, 0, 255, 150);         //need in the data restore
             queen = true;
         } else if (color % 2 == 0) {
             this.color = new Color(160, 84, 49);

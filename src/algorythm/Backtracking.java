@@ -9,7 +9,7 @@ import java.util.ArrayList;
 /**
  * Created by Daniil on 22.06.2017.
  */
-public class Backtracking implements Runnable {
+public class Backtracking implements Runnable, Algorithm {
 
     private static final long RENDER_DELAY = 50;
 
@@ -168,9 +168,9 @@ public class Backtracking implements Runnable {
         combinations.add(newCombination);
     }
 
-    private void delay(long milis) {
+    public void delay(long millis) {
         try {
-            Thread.sleep(milis);
+            Thread.sleep(millis);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
