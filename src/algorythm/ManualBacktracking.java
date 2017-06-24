@@ -7,23 +7,24 @@ import objects.GraphPanel;
 import java.util.ArrayList;
 
 /**
- * Created by Daniil on 22.06.2017.
+ * Created by Daniil on 24.06.2017.
  */
-public class Backtracking implements Runnable, Algorithm {
-
-    private static final long RENDER_DELAY = 50;
+public class ManualBacktracking implements Algorithm {
 
     private Desk desk;
     private ArrayList<Cell[][]> combinations;
+    private ArrayList<Cell[][]> steps;
     private Cell[][] matrix;
     private GraphPanel panel;
 
 
-    public Backtracking(Desk desk, GraphPanel panel) {
+    public ManualBacktracking(Desk desk, GraphPanel panel) {
         this.desk = desk;
         this.combinations = new ArrayList<>();
+        this.steps = new ArrayList<>();
         this.matrix = desk.getCellMatrix();
         this.panel = panel;
+        tryQueen(0, 0, matrix.length, 0);
     }
 
     @Override
@@ -75,8 +76,8 @@ public class Backtracking implements Runnable, Algorithm {
             diagY++;
         }
         matrix[row][col].makeQueen();
-        //desk.updateDesk();
         panel.updateUI();
+        addStep();
     }
 
     @Override
@@ -128,8 +129,8 @@ public class Backtracking implements Runnable, Algorithm {
             diagY++;
         }
         matrix[row][col].unMakeQueen();
-        //desk.updateDesk();
         panel.updateUI();
+        addStep();
     }
 
     @Override
@@ -140,23 +141,25 @@ public class Backtracking implements Runnable, Algorithm {
         if (row == size || col == size) return;
         for (int i = 0; i < size; i++) {
             if (matrix[row][i].isFree()) {
-                delay(RENDER_DELAY);
                 setQueen(row, i);
                 System.out.println("Set qween " + num);
                 num++;
                 int nextRow = row + 1;
                 tryQueen(nextRow, col, size, num);
-                delay(RENDER_DELAY);
                 removeQueen(row, i);
                 num--;
                 System.out.println("Remove qween " + num);
             }
         }
-
     }
 
+    @Override
     public ArrayList<Cell[][]> getCombinations() {
         return combinations;
+    }
+
+    public ArrayList<Cell[][]> getSteps() {
+        return steps;
     }
 
     private void addCombination() {
@@ -171,20 +174,15 @@ public class Backtracking implements Runnable, Algorithm {
         combinations.add(newCombination);
     }
 
-    public void delay(long millis) {
-        try {
-            Thread.sleep(millis);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
+    private void addStep() {
+        int size = matrix.length;
+        Cell[][] newStep = new Cell[size][size];
+        for(int i = 0; i < size; i++){
+            for(int j = 0; j < size; j++){
+                newStep[i][j] = (Cell) matrix[i][j].clone();
+            }
         }
+
+        steps.add(newStep);
     }
-
-    @Override
-    public void run() {
-        combinations.clear();
-
-        tryQueen(0, 0, matrix.length, 0);
-        desk.notifyPanel();
-    }
-
 }

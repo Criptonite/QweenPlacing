@@ -17,12 +17,11 @@ public class GraphPanel extends JPanel {
 
     private Graphics2D graphics;
 
-    public void setDesk(Desk desk) {
-        this.desk = desk;
-    }
-
     private Desk desk;
+
     private ArrayList<Cell[][]> combinationsArray;
+
+    private ArrayList<Cell[][]> stepsArray;
 
     public GraphPanel(MainFrame frame) {
         this.frame = frame;
@@ -63,7 +62,26 @@ public class GraphPanel extends JPanel {
         this.combinationsArray = combinationsArray;
     }
 
+    public ArrayList<Cell[][]> getStepsArray() {
+        return stepsArray;
+    }
+
+    public void setStepsArray(ArrayList<Cell[][]> stepsArray) {
+        this.stepsArray = stepsArray;
+    }
+
+    public void drawStep(int index){
+        System.out.println(index);
+        stepsArray = desk.getSteps();
+        desk.setCellMatrix(stepsArray.get(index));
+        this.updateUI();
+    }
+
     public MainFrame getFrame() {
         return frame;
+    }
+
+    public void setDesk(Desk desk) {
+        this.desk = desk;
     }
 }

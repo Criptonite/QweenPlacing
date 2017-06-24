@@ -147,7 +147,7 @@ public class MainFrame extends JFrame {
         startButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-               toStratCondition();
+                toStratCondition();
                 graphPanel.searchSolutions();
                 graphPanel.updateUI();
             }
@@ -162,10 +162,18 @@ public class MainFrame extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 if (factor == -1 && index == 0) index++;
-                graphPanel.drawCombination(index++);
+//                /*For combinations*/
+//                graphPanel.drawCombination(index++);
+//                preButton.setEnabled(true);
+//                if (index > graphPanel.getCombinationsArray().size() - 1) {
+//                    index = graphPanel.getCombinationsArray().size() - 1;
+//                    nextButton.setEnabled(false);
+//                }
+                                /*For steps*/
+                graphPanel.drawStep(index++);
                 preButton.setEnabled(true);
-                if (index > graphPanel.getCombinationsArray().size() - 1) {
-                    index = graphPanel.getCombinationsArray().size() - 1;
+                if (index > graphPanel.getStepsArray().size() - 1) {
+                    index = graphPanel.getStepsArray().size() - 1;
                     nextButton.setEnabled(false);
                 }
                 factor = 1;
@@ -180,8 +188,17 @@ public class MainFrame extends JFrame {
         preButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if (factor == 1 && index == graphPanel.getCombinationsArray().size() - 1) index--;
-                graphPanel.drawCombination(index--);
+//                /*For combinations*/
+//                if (factor == 1 && index == graphPanel.getCombinationsArray().size() - 1) index--;
+//                graphPanel.drawCombination(index--);
+//                nextButton.setEnabled(true);
+//                if (index < 0) {
+//                    index = 0;
+//                    preButton.setEnabled(false);
+//                }
+                /*for steps*/
+                if (factor == 1 && index == graphPanel.getStepsArray().size() - 1) index--;
+                graphPanel.drawStep(index--);
                 nextButton.setEnabled(true);
                 if (index < 0) {
                     index = 0;

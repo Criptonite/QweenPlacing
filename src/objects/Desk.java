@@ -1,9 +1,11 @@
 package objects;
 
 import algorythm.Backtracking;
+import algorythm.ManualBacktracking;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;
+import java.security.spec.AlgorithmParameterSpec;
 import java.util.ArrayList;
 
 /**
@@ -25,6 +27,8 @@ public class Desk {
     private Cell[][] cellMatrix;
 
     private Backtracking backtracking;
+
+    private ManualBacktracking manualBacktracking;
 
     private GraphPanel graphPanel; //NEED
 
@@ -113,9 +117,12 @@ public class Desk {
 
 
     public void searchSolutions() {
-        backtracking = new Backtracking(this, graphPanel);
-        Thread backtrackingTask = new Thread(backtracking);
-        backtrackingTask.start();
+//        backtracking = new Backtracking(this, graphPanel);
+//        Thread backtrackingTask = new Thread(backtracking);
+//        backtrackingTask.start();
+
+        manualBacktracking = new ManualBacktracking(this, graphPanel);
+        manualNotifyPanel();
 
     }
 
@@ -125,8 +132,18 @@ public class Desk {
     }
 
 
+    public void manualNotifyPanel() {
+        //graphPanel.setCombinationsArray(getCombinations());
+        graphPanel.setStepsArray(getSteps());
+        graphPanel.getFrame().getNextButton().setEnabled(true);
+    }
+
     public ArrayList<Cell[][]> getCombinations() {
         return backtracking.getCombinations();
+    }
+
+    public ArrayList<Cell[][]> getSteps() {
+        return manualBacktracking.getSteps();
     }
 
     public void setCellMatrix(Cell[][] cellMatrix) {
