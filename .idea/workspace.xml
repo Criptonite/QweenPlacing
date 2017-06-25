@@ -2,7 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9b2f8e4a-55c7-4969-aefd-288716f13382" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/algorythm/Backtracking.java" afterPath="$PROJECT_DIR$/src/algorythm/Backtracking.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/frames/MainFrame.java" afterPath="$PROJECT_DIR$/src/frames/MainFrame.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/objects/Desk.java" afterPath="$PROJECT_DIR$/src/objects/Desk.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path=".idea/dataSources.local.xml" />
@@ -25,8 +27,8 @@
       <file leaf-file-name="Desk.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/objects/Desk.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2398">
-              <caret line="113" column="68" selection-start-line="113" selection-start-column="68" selection-end-line="113" selection-end-column="68" />
+            <state relative-caret-position="-1497">
+              <caret line="24" column="32" selection-start-line="24" selection-start-column="32" selection-end-line="24" selection-end-column="32" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -83,7 +85,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Backtracking.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Backtracking.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/algorythm/Backtracking.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="110">
@@ -113,23 +115,22 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="MainFrame.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="MainFrame.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/frames/MainFrame.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-661">
-              <caret line="58" column="18" selection-start-line="58" selection-start-column="18" selection-end-line="58" selection-end-column="18" />
+            <state relative-caret-position="373">
+              <caret line="252" column="0" selection-start-line="252" selection-start-column="0" selection-end-line="252" selection-end-column="0" />
               <folding>
                 <element signature="method#MainFrame#0;class#MainFrame#0" expanded="false" />
                 <element signature="method#init#0;class#MainFrame#0" expanded="false" />
                 <element signature="method#initMenuBar#0;class#MainFrame#0" expanded="false" />
-                <element signature="method#initRightPanel#0;class#MainFrame#0" expanded="false" />
-                <element signature="e#9189#9190#0" expanded="true" />
-                <element signature="e#9237#9238#0" expanded="true" />
-                <element signature="e#9442#9443#0" expanded="true" />
-                <element signature="e#9489#9490#0" expanded="true" />
-                <marker date="1498388417206" expanded="false" signature="2386:3042" ph="{...}" />
-                <marker date="1498388417206" expanded="false" signature="10063:10329" ph="{...}" />
-                <marker date="1498388417206" expanded="false" signature="10423:11123" ph="{...}" />
+                <element signature="e#9105#9106#0" expanded="true" />
+                <element signature="e#9153#9154#0" expanded="true" />
+                <element signature="e#9358#9359#0" expanded="true" />
+                <element signature="e#9405#9406#0" expanded="true" />
+                <element signature="method#toStartCondition#0;class#MainFrame#0" expanded="false" />
+                <marker date="1498410517178" expanded="false" signature="2387:3043" ph="{...}" />
+                <marker date="1498410517178" expanded="false" signature="10339:11039" ph="{...}" />
               </folding>
             </state>
           </provider>
@@ -195,10 +196,10 @@
         <option value="$PROJECT_DIR$/src/algorythm/BacktrackingAlgorithm.java" />
         <option value="$PROJECT_DIR$/src/algorythm/Algorithm.java" />
         <option value="$PROJECT_DIR$/src/objects/GraphPanel.java" />
-        <option value="$PROJECT_DIR$/src/objects/Desk.java" />
         <option value="$PROJECT_DIR$/src/algorythm/ManualBacktracking.java" />
-        <option value="$PROJECT_DIR$/src/frames/MainFrame.java" />
         <option value="$PROJECT_DIR$/src/algorythm/Backtracking.java" />
+        <option value="$PROJECT_DIR$/src/objects/Desk.java" />
+        <option value="$PROJECT_DIR$/src/frames/MainFrame.java" />
       </list>
     </option>
   </component>
@@ -293,6 +294,24 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="objects" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="QweenPlacing" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="QweenPlacing" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="frames" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -824,7 +843,7 @@
       <workItem from="1498042069173" duration="773000" />
       <workItem from="1498204549339" duration="4546000" />
       <workItem from="1498213359397" duration="5720000" />
-      <workItem from="1498382149329" duration="6423000" />
+      <workItem from="1498382149329" duration="8626000" />
     </task>
     <task id="LOCAL-00001" summary="Add right control panel">
       <created>1498048254740</created>
@@ -966,11 +985,18 @@
       <option name="project" value="LOCAL" />
       <updated>1498388515676</updated>
     </task>
-    <option name="localTasksCounter" value="21" />
+    <task id="LOCAL-00021" summary="Refactoring in MainFrame">
+      <created>1498388612954</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1498388612954</updated>
+    </task>
+    <option name="localTasksCounter" value="22" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="47063000" />
+    <option name="totallyTimeSpent" value="49266000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-9" y="-9" width="1938" height="1098" extended-state="6" />
@@ -983,7 +1009,7 @@
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.50429183" order="14" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.49570817" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.33" sideWeight="0.49570817" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.49785408" order="14" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3288889" sideWeight="0.49570817" order="14" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -1168,14 +1194,13 @@
             <element signature="method#MainFrame#0;class#MainFrame#0" expanded="false" />
             <element signature="method#init#0;class#MainFrame#0" expanded="false" />
             <element signature="method#initMenuBar#0;class#MainFrame#0" expanded="false" />
-            <element signature="method#initRightPanel#0;class#MainFrame#0" expanded="false" />
-            <element signature="e#9189#9190#0" expanded="true" />
-            <element signature="e#9237#9238#0" expanded="true" />
-            <element signature="e#9442#9443#0" expanded="true" />
-            <element signature="e#9489#9490#0" expanded="true" />
-            <marker date="1498388417206" expanded="false" signature="2386:3042" ph="{...}" />
-            <marker date="1498388417206" expanded="false" signature="10063:10329" ph="{...}" />
-            <marker date="1498388417206" expanded="false" signature="10423:11123" ph="{...}" />
+            <element signature="e#9105#9106#0" expanded="true" />
+            <element signature="e#9153#9154#0" expanded="true" />
+            <element signature="e#9358#9359#0" expanded="true" />
+            <element signature="e#9405#9406#0" expanded="true" />
+            <element signature="method#toStartCondition#0;class#MainFrame#0" expanded="false" />
+            <marker date="1498410517178" expanded="false" signature="2387:3043" ph="{...}" />
+            <marker date="1498410517178" expanded="false" signature="10339:11039" ph="{...}" />
           </folding>
         </state>
       </provider>
@@ -1227,14 +1252,13 @@
             <element signature="method#MainFrame#0;class#MainFrame#0" expanded="false" />
             <element signature="method#init#0;class#MainFrame#0" expanded="false" />
             <element signature="method#initMenuBar#0;class#MainFrame#0" expanded="false" />
-            <element signature="method#initRightPanel#0;class#MainFrame#0" expanded="false" />
-            <element signature="e#9189#9190#0" expanded="true" />
-            <element signature="e#9237#9238#0" expanded="true" />
-            <element signature="e#9442#9443#0" expanded="true" />
-            <element signature="e#9489#9490#0" expanded="true" />
-            <marker date="1498388417206" expanded="false" signature="2386:3042" ph="{...}" />
-            <marker date="1498388417206" expanded="false" signature="10063:10329" ph="{...}" />
-            <marker date="1498388417206" expanded="false" signature="10423:11123" ph="{...}" />
+            <element signature="e#9105#9106#0" expanded="true" />
+            <element signature="e#9153#9154#0" expanded="true" />
+            <element signature="e#9358#9359#0" expanded="true" />
+            <element signature="e#9405#9406#0" expanded="true" />
+            <element signature="method#toStartCondition#0;class#MainFrame#0" expanded="false" />
+            <marker date="1498410517178" expanded="false" signature="2387:3043" ph="{...}" />
+            <marker date="1498410517178" expanded="false" signature="10339:11039" ph="{...}" />
           </folding>
         </state>
       </provider>
@@ -1264,14 +1288,13 @@
             <element signature="method#MainFrame#0;class#MainFrame#0" expanded="false" />
             <element signature="method#init#0;class#MainFrame#0" expanded="false" />
             <element signature="method#initMenuBar#0;class#MainFrame#0" expanded="false" />
-            <element signature="method#initRightPanel#0;class#MainFrame#0" expanded="false" />
-            <element signature="e#9189#9190#0" expanded="true" />
-            <element signature="e#9237#9238#0" expanded="true" />
-            <element signature="e#9442#9443#0" expanded="true" />
-            <element signature="e#9489#9490#0" expanded="true" />
-            <marker date="1498388417206" expanded="false" signature="2386:3042" ph="{...}" />
-            <marker date="1498388417206" expanded="false" signature="10063:10329" ph="{...}" />
-            <marker date="1498388417206" expanded="false" signature="10423:11123" ph="{...}" />
+            <element signature="e#9105#9106#0" expanded="true" />
+            <element signature="e#9153#9154#0" expanded="true" />
+            <element signature="e#9358#9359#0" expanded="true" />
+            <element signature="e#9405#9406#0" expanded="true" />
+            <element signature="method#toStartCondition#0;class#MainFrame#0" expanded="false" />
+            <marker date="1498410517178" expanded="false" signature="2387:3043" ph="{...}" />
+            <marker date="1498410517178" expanded="false" signature="10339:11039" ph="{...}" />
           </folding>
         </state>
       </provider>
@@ -1308,14 +1331,13 @@
             <element signature="method#MainFrame#0;class#MainFrame#0" expanded="false" />
             <element signature="method#init#0;class#MainFrame#0" expanded="false" />
             <element signature="method#initMenuBar#0;class#MainFrame#0" expanded="false" />
-            <element signature="method#initRightPanel#0;class#MainFrame#0" expanded="false" />
-            <element signature="e#9189#9190#0" expanded="true" />
-            <element signature="e#9237#9238#0" expanded="true" />
-            <element signature="e#9442#9443#0" expanded="true" />
-            <element signature="e#9489#9490#0" expanded="true" />
-            <marker date="1498388417206" expanded="false" signature="2386:3042" ph="{...}" />
-            <marker date="1498388417206" expanded="false" signature="10063:10329" ph="{...}" />
-            <marker date="1498388417206" expanded="false" signature="10423:11123" ph="{...}" />
+            <element signature="e#9105#9106#0" expanded="true" />
+            <element signature="e#9153#9154#0" expanded="true" />
+            <element signature="e#9358#9359#0" expanded="true" />
+            <element signature="e#9405#9406#0" expanded="true" />
+            <element signature="method#toStartCondition#0;class#MainFrame#0" expanded="false" />
+            <marker date="1498410517178" expanded="false" signature="2387:3043" ph="{...}" />
+            <marker date="1498410517178" expanded="false" signature="10339:11039" ph="{...}" />
           </folding>
         </state>
       </provider>
@@ -1411,14 +1433,13 @@
             <element signature="method#MainFrame#0;class#MainFrame#0" expanded="false" />
             <element signature="method#init#0;class#MainFrame#0" expanded="false" />
             <element signature="method#initMenuBar#0;class#MainFrame#0" expanded="false" />
-            <element signature="method#initRightPanel#0;class#MainFrame#0" expanded="false" />
-            <element signature="e#9189#9190#0" expanded="true" />
-            <element signature="e#9237#9238#0" expanded="true" />
-            <element signature="e#9442#9443#0" expanded="true" />
-            <element signature="e#9489#9490#0" expanded="true" />
-            <marker date="1498388417206" expanded="false" signature="2386:3042" ph="{...}" />
-            <marker date="1498388417206" expanded="false" signature="10063:10329" ph="{...}" />
-            <marker date="1498388417206" expanded="false" signature="10423:11123" ph="{...}" />
+            <element signature="e#9105#9106#0" expanded="true" />
+            <element signature="e#9153#9154#0" expanded="true" />
+            <element signature="e#9358#9359#0" expanded="true" />
+            <element signature="e#9405#9406#0" expanded="true" />
+            <element signature="method#toStartCondition#0;class#MainFrame#0" expanded="false" />
+            <marker date="1498410517178" expanded="false" signature="2387:3043" ph="{...}" />
+            <marker date="1498410517178" expanded="false" signature="10339:11039" ph="{...}" />
           </folding>
         </state>
       </provider>
@@ -1455,14 +1476,13 @@
             <element signature="method#MainFrame#0;class#MainFrame#0" expanded="false" />
             <element signature="method#init#0;class#MainFrame#0" expanded="false" />
             <element signature="method#initMenuBar#0;class#MainFrame#0" expanded="false" />
-            <element signature="method#initRightPanel#0;class#MainFrame#0" expanded="false" />
-            <element signature="e#9189#9190#0" expanded="true" />
-            <element signature="e#9237#9238#0" expanded="true" />
-            <element signature="e#9442#9443#0" expanded="true" />
-            <element signature="e#9489#9490#0" expanded="true" />
-            <marker date="1498388417206" expanded="false" signature="2386:3042" ph="{...}" />
-            <marker date="1498388417206" expanded="false" signature="10063:10329" ph="{...}" />
-            <marker date="1498388417206" expanded="false" signature="10423:11123" ph="{...}" />
+            <element signature="e#9105#9106#0" expanded="true" />
+            <element signature="e#9153#9154#0" expanded="true" />
+            <element signature="e#9358#9359#0" expanded="true" />
+            <element signature="e#9405#9406#0" expanded="true" />
+            <element signature="method#toStartCondition#0;class#MainFrame#0" expanded="false" />
+            <marker date="1498410517178" expanded="false" signature="2387:3043" ph="{...}" />
+            <marker date="1498410517178" expanded="false" signature="10339:11039" ph="{...}" />
           </folding>
         </state>
       </provider>
@@ -1545,42 +1565,12 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/objects/Desk.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2398">
-          <caret line="113" column="68" selection-start-line="113" selection-start-column="68" selection-end-line="113" selection-end-column="68" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/objects/GraphPanel.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="615">
           <caret line="61" column="0" selection-start-line="61" selection-start-column="0" selection-end-line="61" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/frames/MainFrame.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-661">
-          <caret line="58" column="18" selection-start-line="58" selection-start-column="18" selection-end-line="58" selection-end-column="18" />
-          <folding>
-            <element signature="method#MainFrame#0;class#MainFrame#0" expanded="false" />
-            <element signature="method#init#0;class#MainFrame#0" expanded="false" />
-            <element signature="method#initMenuBar#0;class#MainFrame#0" expanded="false" />
-            <element signature="method#initRightPanel#0;class#MainFrame#0" expanded="false" />
-            <element signature="e#9189#9190#0" expanded="true" />
-            <element signature="e#9237#9238#0" expanded="true" />
-            <element signature="e#9442#9443#0" expanded="true" />
-            <element signature="e#9489#9490#0" expanded="true" />
-            <marker date="1498388417206" expanded="false" signature="2386:3042" ph="{...}" />
-            <marker date="1498388417206" expanded="false" signature="10063:10329" ph="{...}" />
-            <marker date="1498388417206" expanded="false" signature="10423:11123" ph="{...}" />
           </folding>
         </state>
       </provider>
@@ -1593,6 +1583,14 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/algorythm/Backtracking.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="110">
+          <caret line="10" column="36" selection-start-line="10" selection-start-column="36" selection-end-line="10" selection-end-column="36" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/algorythm/ManualBacktracking.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="3608">
@@ -1601,11 +1599,32 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/algorythm/Backtracking.java">
+    <entry file="file://$PROJECT_DIR$/src/objects/Desk.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="110">
-          <caret line="10" column="36" selection-start-line="10" selection-start-column="36" selection-end-line="10" selection-end-column="36" />
-          <folding />
+        <state relative-caret-position="-1497">
+          <caret line="24" column="32" selection-start-line="24" selection-start-column="32" selection-end-line="24" selection-end-column="32" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/frames/MainFrame.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="373">
+          <caret line="252" column="0" selection-start-line="252" selection-start-column="0" selection-end-line="252" selection-end-column="0" />
+          <folding>
+            <element signature="method#MainFrame#0;class#MainFrame#0" expanded="false" />
+            <element signature="method#init#0;class#MainFrame#0" expanded="false" />
+            <element signature="method#initMenuBar#0;class#MainFrame#0" expanded="false" />
+            <element signature="e#9105#9106#0" expanded="true" />
+            <element signature="e#9153#9154#0" expanded="true" />
+            <element signature="e#9358#9359#0" expanded="true" />
+            <element signature="e#9405#9406#0" expanded="true" />
+            <element signature="method#toStartCondition#0;class#MainFrame#0" expanded="false" />
+            <marker date="1498410517178" expanded="false" signature="2387:3043" ph="{...}" />
+            <marker date="1498410517178" expanded="false" signature="10339:11039" ph="{...}" />
+          </folding>
         </state>
       </provider>
     </entry>

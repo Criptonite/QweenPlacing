@@ -22,12 +22,8 @@ public class Desk {
     private int size;
     private double cellSize;
     Graphics2D graphics2D;
-
-
     private Cell[][] cellMatrix;
-
     private Algorithm backtracking;
-
     private GraphPanel graphPanel; //NEED
 
     /**

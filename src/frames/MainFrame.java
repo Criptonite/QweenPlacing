@@ -66,6 +66,7 @@ public class MainFrame extends JFrame {
 
 
     //METHODS FOR FRAME CONSTRUCT
+
     /**
      * Initializing of frame
      */
@@ -175,7 +176,7 @@ public class MainFrame extends JFrame {
         sizeSpinner.addChangeListener(new ChangeListener() {
             @Override
             public void stateChanged(ChangeEvent e) {
-                toStratCondition();
+                toStartCondition();
                 graphPanel.updateUI();
             }
         });
@@ -202,7 +203,7 @@ public class MainFrame extends JFrame {
         startButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                toStratCondition();
+                toStartCondition();
                 if (isManual) {
                     graphPanel.searchSolutions("manual");
                 } else {
@@ -220,11 +221,10 @@ public class MainFrame extends JFrame {
         nextButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if (factor == -1 && index == 0) index++;
-
+                if (factor == -1) index += 2;
+                System.out.println(index);
                 graphPanel.drawCombination(index++);
                 if (index > graphPanel.getCombinationsArray().size() - 1) {
-                    index = graphPanel.getCombinationsArray().size() - 1;
                     nextButton.setEnabled(false);
                 }
 
@@ -244,12 +244,12 @@ public class MainFrame extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
 
-                if (factor == 1 && index == graphPanel.getCombinationsArray().size() - 1) index--;
+                if (factor == 1) index -= 2;
+                System.out.println(index);
                 graphPanel.drawCombination(index--);
 
                 nextButton.setEnabled(true);
                 if (index < 0) {
-                    index = 0;
                     preButton.setEnabled(false);
                 }
                 factor = -1;
@@ -306,7 +306,7 @@ public class MainFrame extends JFrame {
     /**
      * Method for setting buttons behavior in runtime
      */
-    private void toStratCondition() {
+    private void toStartCondition() {
         Desk desk = new Desk((int) sizeSpinner.getValue(), graphPanel, (Graphics2D) graphPanel.getGraphics());
         graphPanel.setDesk(desk);
         factor = 1;
@@ -362,6 +362,7 @@ public class MainFrame extends JFrame {
 
     /**
      * Returns desk size
+     *
      * @return value from size spinner
      */
     public int getSpinnerValue() {
@@ -370,6 +371,7 @@ public class MainFrame extends JFrame {
 
     /**
      * Provides next button to callback from outer class
+     *
      * @return next button
      */
     public JButton getNextButton() {
