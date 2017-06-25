@@ -7,7 +7,8 @@ import objects.GraphPanel;
 import java.util.ArrayList;
 
 /**
- * Created by Daniil on 22.06.2017.
+ * Created by Dmitriy on 22.06.2017.
+ * Extended by Ruslan on 24.07.2017.
  */
 public class Backtracking implements Runnable, Algorithm {
 
