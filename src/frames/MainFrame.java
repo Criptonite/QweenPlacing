@@ -55,8 +55,21 @@ public class MainFrame extends JFrame {
     private boolean isManual;
 
 
+    /**
+     * Constructor
+     */
     public MainFrame() {
         super();
+        init();
+
+    }
+
+
+    //METHODS FOR FRAME CONSTRUCT
+    /**
+     * Initializing of frame
+     */
+    private void init() {
         factor = 1;
         setTitle("Queen Placing v 0.1");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -65,14 +78,58 @@ public class MainFrame extends JFrame {
 
         initMenuBar();
 
+        initLeftPanel();
 
-        //Create standart dimensions
+        initRightPanel();
+
+        getContentPane().add(graphPanel);
+        getContentPane().add(rightPanel);
+        setJMenuBar(menuBar);
+    }
+
+    /**
+     * Initializing of menu bar and menu items
+     */
+    private void initMenuBar() {
+        menuBar = new JMenuBar();
+        MenuListener listener = new MenuBarListener();
+        saveMenu = new JMenu("Save");
+        saveMenu.addMenuListener(listener);
+        openMenu = new JMenu("Open");
+        openMenu.addMenuListener(listener);
+        infoMenu = new JMenu("Info");
+        infoMenu.addMenuListener(listener);
+
+        menuBar.add(saveMenu);
+        menuBar.add(openMenu);
+        menuBar.add(infoMenu);
+    }
+
+    /**
+     * Initializing of left panel with graphic panel
+     */
+    private void initLeftPanel() {
         //Left panel dimension
         Dimension leftPanelMinDimension = new Dimension(250, getHeight());
         Dimension leftPanelMaxDimension = new Dimension(450, getHeight());
         Dimension leftPanelPreferredDimension = new Dimension(350, getHeight());
 
+        //Create left panel
+        graphPanel = new GraphPanel(this);
+        graphPanel.setMinimumSize(leftPanelMinDimension);
+        graphPanel.setMaximumSize(leftPanelMaxDimension);
+        graphPanel.setPreferredSize(leftPanelPreferredDimension);
+        graphPanel.setBorder(new CompoundBorder(new EmptyBorder(1, 1, 1, 1),
+                new BevelBorder(BevelBorder.LOWERED)));
+    }
 
+    /**
+     * Initializing of right panel with spinner and buttons
+     */
+    private void initRightPanel() {
+
+
+        //Create standart dimensions
         //Right panel dimensoin
         Dimension rightPanelMinDimension = new Dimension(150, getHeight());
         Dimension rightPanelMaxDimension = new Dimension(350, getHeight());
@@ -88,14 +145,6 @@ public class MainFrame extends JFrame {
         Dimension buttonMaxDimension = new Dimension(150, 45);
         Dimension buttonPreferredDimension = new Dimension(50, 45);
 
-
-        //Create left panel
-        graphPanel = new GraphPanel(this);
-        graphPanel.setMinimumSize(leftPanelMinDimension);
-        graphPanel.setMaximumSize(leftPanelMaxDimension);
-        graphPanel.setPreferredSize(leftPanelPreferredDimension);
-        graphPanel.setBorder(new CompoundBorder(new EmptyBorder(1, 1, 1, 1),
-                new BevelBorder(BevelBorder.LOWERED)));
 
         //Create right panel
         rightPanel = new JPanel();
@@ -244,8 +293,6 @@ public class MainFrame extends JFrame {
         autoMode.setSelected(true);
         modePanel.add(autoMode);
         modePanel.add(manualMode);
-
-
         rightPanel.add(Box.createVerticalStrut(10));
         rightPanel.add(sizeSubPanel);
         rightPanel.add(Box.createVerticalStrut(25));
@@ -253,31 +300,23 @@ public class MainFrame extends JFrame {
         rightPanel.add(Box.createVerticalStrut(55));
         rightPanel.add(buttonsSubPanel);
 
-
-        getContentPane().add(graphPanel);
-
-
-        getContentPane().add(rightPanel);
-
-        setJMenuBar(menuBar);
-    }
-
-    private void initMenuBar() {
-        menuBar = new JMenuBar();
-        MenuListener listener = new MenuBarListener();
-        saveMenu = new JMenu("Save");
-        saveMenu.addMenuListener(listener);
-        openMenu = new JMenu("Open");
-        openMenu.addMenuListener(listener);
-        infoMenu = new JMenu("Info");
-        infoMenu.addMenuListener(listener);
-
-        menuBar.add(saveMenu);
-        menuBar.add(openMenu);
-        menuBar.add(infoMenu);
     }
 
 
+    /**
+     * Method for setting buttons behavior in runtime
+     */
+    private void toStratCondition() {
+        Desk desk = new Desk((int) sizeSpinner.getValue(), graphPanel, (Graphics2D) graphPanel.getGraphics());
+        graphPanel.setDesk(desk);
+        factor = 1;
+        index = 0;
+        nextButton.setEnabled(false);
+        preButton.setEnabled(false);
+    }
+
+
+    //NESTED CLASS MENU LISTENER
     private class MenuBarListener implements MenuListener {
 
         @Override
@@ -307,11 +346,6 @@ public class MainFrame extends JFrame {
         }
     }
 
-    public int getSpinnerValue() {
-        return (int) sizeSpinner.getValue();
-    }
-
-
     //Will be use for implementing menu behavior. Will be implemented later
     private void saveAction() {
     }
@@ -324,17 +358,21 @@ public class MainFrame extends JFrame {
     }
 
 
+    //GETTERS AND SETTERS BELOW
+
+    /**
+     * Returns desk size
+     * @return value from size spinner
+     */
+    public int getSpinnerValue() {
+        return (int) sizeSpinner.getValue();
+    }
+
+    /**
+     * Provides next button to callback from outer class
+     * @return next button
+     */
     public JButton getNextButton() {
         return nextButton;
     }
-
-    private void toStratCondition() {
-        Desk desk = new Desk((int) sizeSpinner.getValue(), graphPanel, (Graphics2D) graphPanel.getGraphics());
-        graphPanel.setDesk(desk);
-        factor = 1;
-        index = 0;
-        nextButton.setEnabled(false);
-        preButton.setEnabled(false);
-    }
-
 }

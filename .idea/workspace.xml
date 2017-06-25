@@ -3,11 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="9b2f8e4a-55c7-4969-aefd-288716f13382" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/algorythm/Algorithm.java" afterPath="$PROJECT_DIR$/src/algorythm/Algorithm.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/algorythm/ManualBacktracking.java" afterPath="$PROJECT_DIR$/src/algorythm/ManualBacktracking.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/frames/MainFrame.java" afterPath="$PROJECT_DIR$/src/frames/MainFrame.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/objects/Desk.java" afterPath="$PROJECT_DIR$/src/objects/Desk.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/objects/GraphPanel.java" afterPath="$PROJECT_DIR$/src/objects/GraphPanel.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path=".idea/dataSources.local.xml" />
@@ -121,13 +117,20 @@
       <file leaf-file-name="MainFrame.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/frames/MainFrame.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-265">
-              <caret line="199" column="16" selection-start-line="199" selection-start-column="16" selection-end-line="199" selection-end-column="16" />
+            <state relative-caret-position="-661">
+              <caret line="58" column="18" selection-start-line="58" selection-start-column="18" selection-end-line="58" selection-end-column="18" />
               <folding>
-                <element signature="e#8112#8113#0" expanded="true" />
-                <element signature="e#8160#8161#0" expanded="true" />
-                <element signature="e#8365#8366#0" expanded="true" />
-                <element signature="e#8412#8413#0" expanded="true" />
+                <element signature="method#MainFrame#0;class#MainFrame#0" expanded="false" />
+                <element signature="method#init#0;class#MainFrame#0" expanded="false" />
+                <element signature="method#initMenuBar#0;class#MainFrame#0" expanded="false" />
+                <element signature="method#initRightPanel#0;class#MainFrame#0" expanded="false" />
+                <element signature="e#9189#9190#0" expanded="true" />
+                <element signature="e#9237#9238#0" expanded="true" />
+                <element signature="e#9442#9443#0" expanded="true" />
+                <element signature="e#9489#9490#0" expanded="true" />
+                <marker date="1498388417206" expanded="false" signature="2386:3042" ph="{...}" />
+                <marker date="1498388417206" expanded="false" signature="10063:10329" ph="{...}" />
+                <marker date="1498388417206" expanded="false" signature="10423:11123" ph="{...}" />
               </folding>
             </state>
           </provider>
@@ -840,7 +843,7 @@
       <workItem from="1498042069173" duration="773000" />
       <workItem from="1498204549339" duration="4546000" />
       <workItem from="1498213359397" duration="5720000" />
-      <workItem from="1498382149329" duration="4476000" />
+      <workItem from="1498382149329" duration="6324000" />
     </task>
     <task id="LOCAL-00001" summary="Add right control panel">
       <created>1498048254740</created>
@@ -968,11 +971,18 @@
       <option name="project" value="LOCAL" />
       <updated>1498384813597</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="Refactoring performed">
+      <created>1498386677990</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1498386677990</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="45116000" />
+    <option name="totallyTimeSpent" value="46964000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-9" y="-9" width="1938" height="1098" extended-state="6" />
@@ -1093,7 +1103,8 @@
     <MESSAGE value="Small refactoring, add marker interface" />
     <MESSAGE value="Add UI for manual mode" />
     <MESSAGE value="Fixed bug in next and prev buttons" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixed bug in next and prev buttons" />
+    <MESSAGE value="Refactoring performed" />
+    <option name="LAST_COMMIT_MESSAGE" value="Refactoring performed" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1165,10 +1176,17 @@
         <state relative-caret-position="1598">
           <caret line="104" column="26" selection-start-line="104" selection-start-column="26" selection-end-line="104" selection-end-column="26" />
           <folding>
-            <element signature="e#8112#8113#0" expanded="true" />
-            <element signature="e#8160#8161#0" expanded="true" />
-            <element signature="e#8365#8366#0" expanded="true" />
-            <element signature="e#8412#8413#0" expanded="true" />
+            <element signature="method#MainFrame#0;class#MainFrame#0" expanded="false" />
+            <element signature="method#init#0;class#MainFrame#0" expanded="false" />
+            <element signature="method#initMenuBar#0;class#MainFrame#0" expanded="false" />
+            <element signature="method#initRightPanel#0;class#MainFrame#0" expanded="false" />
+            <element signature="e#9189#9190#0" expanded="true" />
+            <element signature="e#9237#9238#0" expanded="true" />
+            <element signature="e#9442#9443#0" expanded="true" />
+            <element signature="e#9489#9490#0" expanded="true" />
+            <marker date="1498388417206" expanded="false" signature="2386:3042" ph="{...}" />
+            <marker date="1498388417206" expanded="false" signature="10063:10329" ph="{...}" />
+            <marker date="1498388417206" expanded="false" signature="10423:11123" ph="{...}" />
           </folding>
         </state>
       </provider>
@@ -1217,10 +1235,17 @@
         <state relative-caret-position="102">
           <caret line="6" column="18" selection-start-line="6" selection-start-column="18" selection-end-line="6" selection-end-column="18" />
           <folding>
-            <element signature="e#8112#8113#0" expanded="true" />
-            <element signature="e#8160#8161#0" expanded="true" />
-            <element signature="e#8365#8366#0" expanded="true" />
-            <element signature="e#8412#8413#0" expanded="true" />
+            <element signature="method#MainFrame#0;class#MainFrame#0" expanded="false" />
+            <element signature="method#init#0;class#MainFrame#0" expanded="false" />
+            <element signature="method#initMenuBar#0;class#MainFrame#0" expanded="false" />
+            <element signature="method#initRightPanel#0;class#MainFrame#0" expanded="false" />
+            <element signature="e#9189#9190#0" expanded="true" />
+            <element signature="e#9237#9238#0" expanded="true" />
+            <element signature="e#9442#9443#0" expanded="true" />
+            <element signature="e#9489#9490#0" expanded="true" />
+            <marker date="1498388417206" expanded="false" signature="2386:3042" ph="{...}" />
+            <marker date="1498388417206" expanded="false" signature="10063:10329" ph="{...}" />
+            <marker date="1498388417206" expanded="false" signature="10423:11123" ph="{...}" />
           </folding>
         </state>
       </provider>
@@ -1247,10 +1272,17 @@
         <state relative-caret-position="1088">
           <caret line="64" column="24" selection-start-line="64" selection-start-column="24" selection-end-line="64" selection-end-column="24" />
           <folding>
-            <element signature="e#8112#8113#0" expanded="true" />
-            <element signature="e#8160#8161#0" expanded="true" />
-            <element signature="e#8365#8366#0" expanded="true" />
-            <element signature="e#8412#8413#0" expanded="true" />
+            <element signature="method#MainFrame#0;class#MainFrame#0" expanded="false" />
+            <element signature="method#init#0;class#MainFrame#0" expanded="false" />
+            <element signature="method#initMenuBar#0;class#MainFrame#0" expanded="false" />
+            <element signature="method#initRightPanel#0;class#MainFrame#0" expanded="false" />
+            <element signature="e#9189#9190#0" expanded="true" />
+            <element signature="e#9237#9238#0" expanded="true" />
+            <element signature="e#9442#9443#0" expanded="true" />
+            <element signature="e#9489#9490#0" expanded="true" />
+            <marker date="1498388417206" expanded="false" signature="2386:3042" ph="{...}" />
+            <marker date="1498388417206" expanded="false" signature="10063:10329" ph="{...}" />
+            <marker date="1498388417206" expanded="false" signature="10423:11123" ph="{...}" />
           </folding>
         </state>
       </provider>
@@ -1284,10 +1316,17 @@
         <state relative-caret-position="186">
           <caret line="37" column="23" selection-start-line="37" selection-start-column="23" selection-end-line="37" selection-end-column="23" />
           <folding>
-            <element signature="e#8112#8113#0" expanded="true" />
-            <element signature="e#8160#8161#0" expanded="true" />
-            <element signature="e#8365#8366#0" expanded="true" />
-            <element signature="e#8412#8413#0" expanded="true" />
+            <element signature="method#MainFrame#0;class#MainFrame#0" expanded="false" />
+            <element signature="method#init#0;class#MainFrame#0" expanded="false" />
+            <element signature="method#initMenuBar#0;class#MainFrame#0" expanded="false" />
+            <element signature="method#initRightPanel#0;class#MainFrame#0" expanded="false" />
+            <element signature="e#9189#9190#0" expanded="true" />
+            <element signature="e#9237#9238#0" expanded="true" />
+            <element signature="e#9442#9443#0" expanded="true" />
+            <element signature="e#9489#9490#0" expanded="true" />
+            <marker date="1498388417206" expanded="false" signature="2386:3042" ph="{...}" />
+            <marker date="1498388417206" expanded="false" signature="10063:10329" ph="{...}" />
+            <marker date="1498388417206" expanded="false" signature="10423:11123" ph="{...}" />
           </folding>
         </state>
       </provider>
@@ -1380,10 +1419,17 @@
         <state relative-caret-position="2346">
           <caret line="148" column="52" selection-start-line="148" selection-start-column="52" selection-end-line="148" selection-end-column="52" />
           <folding>
-            <element signature="e#8112#8113#0" expanded="true" />
-            <element signature="e#8160#8161#0" expanded="true" />
-            <element signature="e#8365#8366#0" expanded="true" />
-            <element signature="e#8412#8413#0" expanded="true" />
+            <element signature="method#MainFrame#0;class#MainFrame#0" expanded="false" />
+            <element signature="method#init#0;class#MainFrame#0" expanded="false" />
+            <element signature="method#initMenuBar#0;class#MainFrame#0" expanded="false" />
+            <element signature="method#initRightPanel#0;class#MainFrame#0" expanded="false" />
+            <element signature="e#9189#9190#0" expanded="true" />
+            <element signature="e#9237#9238#0" expanded="true" />
+            <element signature="e#9442#9443#0" expanded="true" />
+            <element signature="e#9489#9490#0" expanded="true" />
+            <marker date="1498388417206" expanded="false" signature="2386:3042" ph="{...}" />
+            <marker date="1498388417206" expanded="false" signature="10063:10329" ph="{...}" />
+            <marker date="1498388417206" expanded="false" signature="10423:11123" ph="{...}" />
           </folding>
         </state>
       </provider>
@@ -1417,10 +1463,17 @@
         <state relative-caret-position="186">
           <caret line="37" column="23" selection-start-line="37" selection-start-column="23" selection-end-line="37" selection-end-column="23" />
           <folding>
-            <element signature="e#8112#8113#0" expanded="true" />
-            <element signature="e#8160#8161#0" expanded="true" />
-            <element signature="e#8365#8366#0" expanded="true" />
-            <element signature="e#8412#8413#0" expanded="true" />
+            <element signature="method#MainFrame#0;class#MainFrame#0" expanded="false" />
+            <element signature="method#init#0;class#MainFrame#0" expanded="false" />
+            <element signature="method#initMenuBar#0;class#MainFrame#0" expanded="false" />
+            <element signature="method#initRightPanel#0;class#MainFrame#0" expanded="false" />
+            <element signature="e#9189#9190#0" expanded="true" />
+            <element signature="e#9237#9238#0" expanded="true" />
+            <element signature="e#9442#9443#0" expanded="true" />
+            <element signature="e#9489#9490#0" expanded="true" />
+            <marker date="1498388417206" expanded="false" signature="2386:3042" ph="{...}" />
+            <marker date="1498388417206" expanded="false" signature="10063:10329" ph="{...}" />
+            <marker date="1498388417206" expanded="false" signature="10423:11123" ph="{...}" />
           </folding>
         </state>
       </provider>
@@ -1549,13 +1602,20 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/frames/MainFrame.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-265">
-          <caret line="199" column="16" selection-start-line="199" selection-start-column="16" selection-end-line="199" selection-end-column="16" />
+        <state relative-caret-position="-661">
+          <caret line="58" column="18" selection-start-line="58" selection-start-column="18" selection-end-line="58" selection-end-column="18" />
           <folding>
-            <element signature="e#8112#8113#0" expanded="true" />
-            <element signature="e#8160#8161#0" expanded="true" />
-            <element signature="e#8365#8366#0" expanded="true" />
-            <element signature="e#8412#8413#0" expanded="true" />
+            <element signature="method#MainFrame#0;class#MainFrame#0" expanded="false" />
+            <element signature="method#init#0;class#MainFrame#0" expanded="false" />
+            <element signature="method#initMenuBar#0;class#MainFrame#0" expanded="false" />
+            <element signature="method#initRightPanel#0;class#MainFrame#0" expanded="false" />
+            <element signature="e#9189#9190#0" expanded="true" />
+            <element signature="e#9237#9238#0" expanded="true" />
+            <element signature="e#9442#9443#0" expanded="true" />
+            <element signature="e#9489#9490#0" expanded="true" />
+            <marker date="1498388417206" expanded="false" signature="2386:3042" ph="{...}" />
+            <marker date="1498388417206" expanded="false" signature="10063:10329" ph="{...}" />
+            <marker date="1498388417206" expanded="false" signature="10423:11123" ph="{...}" />
           </folding>
         </state>
       </provider>
