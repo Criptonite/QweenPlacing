@@ -43,8 +43,8 @@ public class GraphPanel extends JPanel {
     /**
      * Entry point to algorithm visualizing
      */
-    public void searchSolutions() {
-        desk.searchSolutions();
+    public void searchSolutions(String mode) {
+        desk.searchSolutions(mode);
     }
 
     public void drawCombination(int index){

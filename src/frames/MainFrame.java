@@ -44,9 +44,15 @@ public class MainFrame extends JFrame {
 
     private JMenu infoMenu;
 
+    private JRadioButton autoMode;
+
+    private JRadioButton manualMode;
+
     private int index = 0;
 
     private int factor = 0;
+
+    private boolean isManual;
 
 
     public MainFrame() {
@@ -131,7 +137,7 @@ public class MainFrame extends JFrame {
         sizeSubPanel.setMinimumSize(new Dimension(225, 50));
         sizeSubPanel.setMaximumSize(new Dimension(300, 50));
         sizeSubPanel.setPreferredSize(new Dimension(250, 50));
-        sizeSubPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
+        sizeSubPanel.setBorder(new EmptyBorder(5, 15, 5, 5));
 
 
         //Create sub panel for buttons
@@ -148,7 +154,11 @@ public class MainFrame extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 toStratCondition();
-                graphPanel.searchSolutions();
+                if (isManual) {
+                    graphPanel.searchSolutions("manual");
+                } else {
+                    graphPanel.searchSolutions("auto");
+                }
                 graphPanel.updateUI();
             }
         });
@@ -162,15 +172,13 @@ public class MainFrame extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 if (factor == -1 && index == 0) index++;
-//                /*For combinations*/
-//                graphPanel.drawCombination(index++);
-//                preButton.setEnabled(true);
-//                if (index > graphPanel.getCombinationsArray().size() - 1) {
-//                    index = graphPanel.getCombinationsArray().size() - 1;
-//                    nextButton.setEnabled(false);
-//                }
-                                /*For steps*/
-                graphPanel.drawStep(index++);
+                if (isManual) {
+                    graphPanel.drawStep(index++);
+                } else {
+                    graphPanel.drawCombination(index++);
+
+                }
+
                 preButton.setEnabled(true);
                 if (index > graphPanel.getStepsArray().size() - 1) {
                     index = graphPanel.getStepsArray().size() - 1;
@@ -188,17 +196,12 @@ public class MainFrame extends JFrame {
         preButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-//                /*For combinations*/
-//                if (factor == 1 && index == graphPanel.getCombinationsArray().size() - 1) index--;
-//                graphPanel.drawCombination(index--);
-//                nextButton.setEnabled(true);
-//                if (index < 0) {
-//                    index = 0;
-//                    preButton.setEnabled(false);
-//                }
-                /*for steps*/
                 if (factor == 1 && index == graphPanel.getStepsArray().size() - 1) index--;
-                graphPanel.drawStep(index--);
+                if (isManual) {
+                    graphPanel.drawStep(index--);
+                } else {
+                    graphPanel.drawCombination(index--);
+                }
                 nextButton.setEnabled(true);
                 if (index < 0) {
                     index = 0;
@@ -220,8 +223,37 @@ public class MainFrame extends JFrame {
         buttonsSubPanel.setBorder(new EmptyBorder(5, 5, 5, 55));
 
 
+        //Create button group panel
+        JPanel modePanel = new JPanel();
+        modePanel.setLayout(new BoxLayout(modePanel, BoxLayout.Y_AXIS));
+        modePanel.setBorder(new CompoundBorder(new EmptyBorder(5, 25, 5, 5),
+                new BevelBorder(BevelBorder.LOWERED)));
+        ButtonGroup modeGroup = new ButtonGroup();
+        autoMode = new JRadioButton("Auto mode");
+        autoMode.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                isManual = false;
+            }
+        });
+        manualMode = new JRadioButton("Manual mode");
+        manualMode.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                isManual = true;
+            }
+        });
+        modeGroup.add(autoMode);
+        modeGroup.add(manualMode);
+        autoMode.setSelected(true);
+        modePanel.add(autoMode);
+        modePanel.add(manualMode);
+
+
         rightPanel.add(Box.createVerticalStrut(10));
         rightPanel.add(sizeSubPanel);
+        rightPanel.add(Box.createVerticalStrut(25));
+        rightPanel.add(modePanel);
         rightPanel.add(Box.createVerticalStrut(55));
         rightPanel.add(buttonsSubPanel);
 
@@ -300,8 +332,8 @@ public class MainFrame extends JFrame {
         return nextButton;
     }
 
-    private void toStratCondition (){
-        Desk desk = new Desk((int) sizeSpinner.getValue(), graphPanel,(Graphics2D) graphPanel.getGraphics());
+    private void toStratCondition() {
+        Desk desk = new Desk((int) sizeSpinner.getValue(), graphPanel, (Graphics2D) graphPanel.getGraphics());
         graphPanel.setDesk(desk);
         factor = 1;
         index = 0;

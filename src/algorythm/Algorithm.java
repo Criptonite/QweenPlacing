@@ -5,7 +5,7 @@ import objects.Cell;
 import java.util.ArrayList;
 
 //marker interface for hierarchy creating ability
-interface Algorithm {
+public interface Algorithm {
 
     void setQueen(int row, int col);
 
