@@ -172,19 +172,13 @@ public class MainFrame extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 if (factor == -1 && index == 0) index++;
-                if (isManual) {
-                    graphPanel.drawStep(index++);
-                    if (index > graphPanel.getStepsArray().size() - 1) {
-                        index = graphPanel.getStepsArray().size() - 1;
-                        nextButton.setEnabled(false);
-                    }
-                } else {
-                    graphPanel.drawCombination(index++);
-                    if (index > graphPanel.getCombinationsArray().size() - 1) {
-                        index = graphPanel.getCombinationsArray().size() - 1;
-                        nextButton.setEnabled(false);
-                    }
+
+                graphPanel.drawCombination(index++);
+                if (index > graphPanel.getCombinationsArray().size() - 1) {
+                    index = graphPanel.getCombinationsArray().size() - 1;
+                    nextButton.setEnabled(false);
                 }
+
 
                 preButton.setEnabled(true);
 
@@ -200,13 +194,10 @@ public class MainFrame extends JFrame {
         preButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if (isManual) {
-                    if (factor == 1 && index == graphPanel.getStepsArray().size() - 1) index--;
-                    graphPanel.drawStep(index--);
-                } else {
-                    if (factor == 1 && index == graphPanel.getCombinationsArray().size() - 1) index--;
-                    graphPanel.drawCombination(index--);
-                }
+
+                if (factor == 1 && index == graphPanel.getCombinationsArray().size() - 1) index--;
+                graphPanel.drawCombination(index--);
+
                 nextButton.setEnabled(true);
                 if (index < 0) {
                     index = 0;

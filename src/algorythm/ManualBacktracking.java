@@ -13,7 +13,6 @@ public class ManualBacktracking implements Algorithm {
 
     private Desk desk;
     private ArrayList<Cell[][]> combinations;
-    private ArrayList<Cell[][]> steps;
     private Cell[][] matrix;
     private GraphPanel panel;
 
@@ -21,10 +20,8 @@ public class ManualBacktracking implements Algorithm {
     public ManualBacktracking(Desk desk, GraphPanel panel) {
         this.desk = desk;
         this.combinations = new ArrayList<>();
-        this.steps = new ArrayList<>();
         this.matrix = desk.getCellMatrix();
         this.panel = panel;
-        tryQueen(0, 0, matrix.length, 0);
     }
 
     @Override
@@ -135,9 +132,6 @@ public class ManualBacktracking implements Algorithm {
 
     @Override
     public void tryQueen(int row, int col, int size, int num) {
-        if (num == (size)) {
-            addCombination();
-        }
         if (row == size || col == size) return;
         for (int i = 0; i < size; i++) {
             if (matrix[row][i].isFree()) {
@@ -158,21 +152,7 @@ public class ManualBacktracking implements Algorithm {
         return combinations;
     }
 
-    public ArrayList<Cell[][]> getSteps() {
-        return steps;
-    }
 
-    private void addCombination() {
-        int size = matrix.length;
-        Cell[][] newCombination = new Cell[size][size];
-        for(int i = 0; i < size; i++){
-            for(int j = 0; j < size; j++){
-                newCombination[i][j] = (Cell) matrix[i][j].clone();
-            }
-        }
-
-        combinations.add(newCombination);
-    }
 
     private void addStep() {
         int size = matrix.length;
@@ -182,7 +162,12 @@ public class ManualBacktracking implements Algorithm {
                 newStep[i][j] = (Cell) matrix[i][j].clone();
             }
         }
+        combinations.add(newStep);
+    }
 
-        steps.add(newStep);
+    @Override
+    public void run() {
+        tryQueen(0, 0, matrix.length, 0);
+        desk.notifyPanel();
     }
 }

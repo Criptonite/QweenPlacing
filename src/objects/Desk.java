@@ -104,11 +104,6 @@ public class Desk {
                 graphics2D.drawImage(qweenImage, (int) cell.getX(), (int) cell.getY(), graphPanel);
     }
 
-
-    public void setSize(int size) {
-        this.size = size;
-    }
-
     public void setGraphics2D(Graphics2D graphics2D) {
         this.graphics2D = graphics2D;
     }
@@ -117,15 +112,11 @@ public class Desk {
     public void searchSolutions(String mode) {
         if("manual".equals(mode)) {
             backtracking = new ManualBacktracking(this, graphPanel);
-            manualNotifyPanel();
-
         } else {
             backtracking = new Backtracking(this, graphPanel);
-            Thread backtrackingTask = new Thread((Backtracking)backtracking);
-            backtrackingTask.start();
         }
-
-
+        Thread backtrackingTask = new Thread(backtracking);
+        backtrackingTask.start();
 
     }
 
@@ -135,18 +126,8 @@ public class Desk {
     }
 
 
-    public void manualNotifyPanel() {
-        //graphPanel.setCombinationsArray(getCombinations());
-        graphPanel.setStepsArray(getSteps());
-        graphPanel.getFrame().getNextButton().setEnabled(true);
-    }
-
     public ArrayList<Cell[][]> getCombinations() {
         return backtracking.getCombinations();
-    }
-
-    public ArrayList<Cell[][]> getSteps() {
-        return ((ManualBacktracking)backtracking).getSteps();
     }
 
     public void setCellMatrix(Cell[][] cellMatrix) {
