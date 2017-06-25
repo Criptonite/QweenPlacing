@@ -174,16 +174,20 @@ public class MainFrame extends JFrame {
                 if (factor == -1 && index == 0) index++;
                 if (isManual) {
                     graphPanel.drawStep(index++);
+                    if (index > graphPanel.getStepsArray().size() - 1) {
+                        index = graphPanel.getStepsArray().size() - 1;
+                        nextButton.setEnabled(false);
+                    }
                 } else {
                     graphPanel.drawCombination(index++);
-
+                    if (index > graphPanel.getCombinationsArray().size() - 1) {
+                        index = graphPanel.getCombinationsArray().size() - 1;
+                        nextButton.setEnabled(false);
+                    }
                 }
 
                 preButton.setEnabled(true);
-                if (index > graphPanel.getStepsArray().size() - 1) {
-                    index = graphPanel.getStepsArray().size() - 1;
-                    nextButton.setEnabled(false);
-                }
+
                 factor = 1;
             }
         });
@@ -196,10 +200,11 @@ public class MainFrame extends JFrame {
         preButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if (factor == 1 && index == graphPanel.getStepsArray().size() - 1) index--;
                 if (isManual) {
+                    if (factor == 1 && index == graphPanel.getStepsArray().size() - 1) index--;
                     graphPanel.drawStep(index--);
                 } else {
+                    if (factor == 1 && index == graphPanel.getCombinationsArray().size() - 1) index--;
                     graphPanel.drawCombination(index--);
                 }
                 nextButton.setEnabled(true);
