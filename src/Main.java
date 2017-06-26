@@ -8,5 +8,6 @@ public class Main {
 
         mainFrame.pack();
         mainFrame.setVisible(true);
+        mainFrame.setLocationRelativeTo(null);
     }
 }
