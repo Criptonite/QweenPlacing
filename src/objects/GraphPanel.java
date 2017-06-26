@@ -4,6 +4,7 @@ import frames.MainFrame;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 
 /**
@@ -15,7 +16,7 @@ import java.util.ArrayList;
 public class GraphPanel extends JPanel {
     private MainFrame frame;
 
-    private Graphics2D graphics;
+    private Graphics2D graphics2D;
 
     private Desk desk;
 
@@ -32,14 +33,13 @@ public class GraphPanel extends JPanel {
     @Override
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
-        graphics = (Graphics2D) g;
+        graphics2D = (Graphics2D) g;
         int size = frame.getSpinnerValue();
         if (desk == null) {
-            desk = new Desk(size, this, graphics);
+            desk = new Desk(size, this.getWidth());
         }
-        desk.setGraphics2D(graphics);
 
-        desk.paintDesk();
+        paintDesk();
     }
 
     /**
@@ -73,5 +73,33 @@ public class GraphPanel extends JPanel {
 
     public void setDesk(Desk desk) {
         this.desk = desk;
+    }
+
+    /**
+     * Method painting desk
+     */
+    private void paintDesk(){
+        QueenImage img = new QueenImage();
+        BufferedImage qweenImage = img.resize((int) desk.getCellSize(), (int) desk.getCellSize());
+        int size = desk.getCellMatrix().length;
+        Cell [][] cellMatrix = desk.getCellMatrix();
+        for (int i = 0; i < size; i++) {
+            for (int j = 0; j < size; j++) {
+                Cell cell = cellMatrix[i][j];
+
+                graphics2D.setColor(cell.getStandardColor());
+                graphics2D.fill(cell);
+                graphics2D.draw(cell);
+
+                graphics2D.setColor(cell.getColor());
+                graphics2D.fill(cell);
+                graphics2D.draw(cell);
+
+                if (qweenImage != null)
+                    if (cell.isQueen())
+                        graphics2D.drawImage(qweenImage, (int) cell.getX(), (int) cell.getY(), this);
+            }
+        }
+
     }
 }
