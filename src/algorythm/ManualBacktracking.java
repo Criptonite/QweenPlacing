@@ -9,22 +9,21 @@ import java.util.ArrayList;
 /**
  * Created by Daniil on 24.06.2017.
  */
-public class ManualBacktracking implements Algorithm {
+public class ManualBacktracking {
 
     private Desk desk;
+    private ArrayList<Cell[][]> steps;
     private ArrayList<Cell[][]> combinations;
     private Cell[][] matrix;
-    private GraphPanel panel;
 
 
-    public ManualBacktracking(Desk desk, GraphPanel panel) {
+    public ManualBacktracking(Desk desk) {
         this.desk = desk;
+        this.steps = new ArrayList<>();
         this.combinations = new ArrayList<>();
         this.matrix = desk.getCellMatrix();
-        this.panel = panel;
     }
 
-    @Override
     public void setQueen(int row, int col) {
         int descSize = matrix.length;
         //horisont
@@ -73,11 +72,9 @@ public class ManualBacktracking implements Algorithm {
             diagY++;
         }
         matrix[row][col].makeQueen();
-        panel.updateUI();
         addStep();
     }
 
-    @Override
     public void removeQueen(int row, int col) {
         int descSize = matrix.length;
         //horisont
@@ -126,12 +123,13 @@ public class ManualBacktracking implements Algorithm {
             diagY++;
         }
         matrix[row][col].unMakeQueen();
-        panel.updateUI();
         addStep();
     }
 
-    @Override
     public void tryQueen(int row, int col, int size, int num) {
+        if (num == (size)) {
+            addCombination();
+        }
         if (row == size || col == size) return;
         for (int i = 0; i < size; i++) {
             if (matrix[row][i].isFree()) {
@@ -147,11 +145,13 @@ public class ManualBacktracking implements Algorithm {
         }
     }
 
-    @Override
     public ArrayList<Cell[][]> getCombinations() {
         return combinations;
     }
 
+    public ArrayList<Cell[][]> getSteps() {
+        return steps;
+    }
 
 
     private void addStep() {
@@ -162,12 +162,26 @@ public class ManualBacktracking implements Algorithm {
                 newStep[i][j] = (Cell) matrix[i][j].clone();
             }
         }
-        combinations.add(newStep);
+        steps.add(newStep);
     }
 
-    @Override
+    private void addCombination() {
+        int size = matrix.length;
+        Cell[][] newCombination = new Cell[size][size];
+        for(int i = 0; i < size; i++){
+            for(int j = 0; j < size; j++){
+                newCombination[i][j] = (Cell) matrix[i][j].clone();
+            }
+        }
+        combinations.add(newCombination);
+    }
+
     public void run() {
+                combinations.clear();
+                steps.clear();
         tryQueen(0, 0, matrix.length, 0);
+        desk.setCombinations(combinations);
+        desk.setSteps(steps);
         desk.notifyPanel();
     }
 }
