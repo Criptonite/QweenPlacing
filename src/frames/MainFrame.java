@@ -229,7 +229,13 @@ public class MainFrame extends JFrame {
                 if (factor == -1) index += 2;
                 System.out.println(index);
                 graphPanel.drawCombination(index++);
-                if (index > graphPanel.getCombinationsArray().size() - 1) {
+                int arrSize;
+                if (isManual)
+                    arrSize = graphPanel.getStepsArray().size();
+                else{
+                    arrSize = graphPanel.getCombinationsArray().size();
+                }
+                if (index > arrSize - 1) {
                     nextButton.setEnabled(false);
                 }
 
