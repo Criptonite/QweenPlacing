@@ -14,6 +14,9 @@ import java.util.ArrayList;
  * Class is accepted signal from frame and marshall it to desk
  */
 public class GraphPanel extends JPanel {
+
+    private static final int DELAY_TIME = 100;
+
     private MainFrame frame;
 
     private Graphics2D graphics2D;
@@ -27,6 +30,7 @@ public class GraphPanel extends JPanel {
     private String mode;
 
     public GraphPanel(MainFrame frame) {
+        this.mode = "auto";
         this.frame = frame;
     }
 
@@ -45,23 +49,49 @@ public class GraphPanel extends JPanel {
     /**
      * Entry point to algorithm visualizing
      */
-    public void searchSolutions(String mode) {
-        this.mode = mode;
+    public void searchSolutions() {
         desk.searchSolutions();
         combinationsArray = desk.getCombinations();
         stepsArray = desk.getSteps();
-        frame.getNextButton().setEnabled(true);
+        frame.getStartButton().setEnabled(true);
     }
 
     public void drawCombination(int index){
         System.out.println(index);
         if("manual".equals(mode))
             desk.setCellMatrix(stepsArray.get(index));
-        else{
+        else if("auto".equals(mode)){
             desk.setCellMatrix(combinationsArray.get(index));
         }
         this.updateUI();
     }
+
+    public void drawCombinations(){
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                for(Cell[][] comb : stepsArray){
+                    desk.setCellMatrix(comb);
+                    updateUI();
+                    delay(DELAY_TIME);
+                }
+                frame.getSizeSpinner().setEnabled(true);
+                frame.getStartButton().setEnabled(true);
+                frame.getNextButton().setEnabled(true);
+            }
+        }).start();
+
+    }
+
+    private void delay(int milis){
+        try {
+            Thread.sleep(milis);
+        } catch (InterruptedException e) {
+            System.out.println("Thread was interrupted");
+            e.printStackTrace();
+        }
+    }
+
 
     public ArrayList<Cell[][]> getCombinationsArray() {
         return combinationsArray;
@@ -101,5 +131,9 @@ public class GraphPanel extends JPanel {
             }
         }
 
+    }
+
+    public void setMode(String mode) {
+        this.mode = mode;
     }
 }
