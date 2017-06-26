@@ -32,6 +32,8 @@ public class MainFrame extends JFrame {
 
     private JPanel rightPanel;
 
+    private JPanel leftPanel;
+
     private JSpinner sizeSpinner;
 
     private GraphPanel graphPanel;
@@ -72,9 +74,9 @@ public class MainFrame extends JFrame {
      */
     private void init() {
         factor = 1;
-        setTitle("Queen Placing v 0.1");
+        setTitle("Расстановка ферзей на доске");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setMinimumSize(new Dimension(800, 450));
+        //setMinimumSize(new Dimension(800, 450));
         getContentPane().setLayout(new BoxLayout(getContentPane(), BoxLayout.X_AXIS));
 
         initMenuBar();
@@ -83,7 +85,7 @@ public class MainFrame extends JFrame {
 
         initRightPanel();
 
-        getContentPane().add(graphPanel);
+        getContentPane().add(leftPanel);
         getContentPane().add(rightPanel);
         setJMenuBar(menuBar);
     }
@@ -94,11 +96,11 @@ public class MainFrame extends JFrame {
     private void initMenuBar() {
         menuBar = new JMenuBar();
         MenuListener listener = new MenuBarListener();
-        saveMenu = new JMenu("Save");
+        saveMenu = new JMenu("Сохранить");
         saveMenu.addMenuListener(listener);
-        openMenu = new JMenu("Open");
+        openMenu = new JMenu("Открыть");
         openMenu.addMenuListener(listener);
-        infoMenu = new JMenu("Info");
+        infoMenu = new JMenu("О программе");
         infoMenu.addMenuListener(listener);
 
         menuBar.add(saveMenu);
@@ -114,6 +116,8 @@ public class MainFrame extends JFrame {
         Dimension leftPanelMinDimension = new Dimension(250, getHeight());
         Dimension leftPanelMaxDimension = new Dimension(450, getHeight());
         Dimension leftPanelPreferredDimension = new Dimension(350, getHeight());
+        leftPanel = new JPanel();
+        leftPanel.setLayout(new BorderLayout());
 
         //Create left panel
         graphPanel = new GraphPanel(this);
@@ -122,6 +126,7 @@ public class MainFrame extends JFrame {
         graphPanel.setPreferredSize(leftPanelPreferredDimension);
         graphPanel.setBorder(new CompoundBorder(new EmptyBorder(1, 1, 1, 1),
                 new BevelBorder(BevelBorder.LOWERED)));
+        leftPanel.add(graphPanel, BorderLayout.CENTER);
     }
 
     /**
@@ -130,29 +135,29 @@ public class MainFrame extends JFrame {
     private void initRightPanel() {
 
 
-        //Create standart dimensions
-        //Right panel dimensoin
-        Dimension rightPanelMinDimension = new Dimension(150, getHeight());
-        Dimension rightPanelMaxDimension = new Dimension(350, getHeight());
-        Dimension rightPanelPreferredDimension = new Dimension(250, getHeight());
-
-        //Spinner dimension
-        Dimension spinnerMinDimension = new Dimension(25, 25);
-        Dimension spinnerMaxDimension = new Dimension(100, 25);
-        Dimension spinnerPreferredDimension = new Dimension(50, 25);
-
-        //Buttons dimension
-        Dimension buttonMinDimension = new Dimension(50, 45);
-        Dimension buttonMaxDimension = new Dimension(150, 45);
-        Dimension buttonPreferredDimension = new Dimension(50, 45);
+//        //Create standart dimensions
+//        //Right panel dimensoin
+//        Dimension rightPanelMinDimension = new Dimension(250, getHeight());
+//        Dimension rightPanelMaxDimension = new Dimension(450, getHeight());
+//        Dimension rightPanelPreferredDimension = new Dimension(350, getHeight());
+//
+//        //Spinner dimension
+//        Dimension spinnerMinDimension = new Dimension(25, 25);
+//        Dimension spinnerMaxDimension = new Dimension(100, 25);
+//        Dimension spinnerPreferredDimension = new Dimension(50, 25);
+//
+//        //Buttons dimension
+//        Dimension buttonMinDimension = new Dimension(250, 45);
+//        Dimension buttonMaxDimension = new Dimension(350, 45);
+//        Dimension buttonPreferredDimension = new Dimension(250, 45);
 
 
         //Create right panel
         rightPanel = new JPanel();
-        rightPanel.setMinimumSize(rightPanelMinDimension);
-        rightPanel.setMaximumSize(rightPanelMaxDimension);
-        rightPanel.setPreferredSize(rightPanelPreferredDimension);
-        rightPanel.setLayout(new BoxLayout(rightPanel, BoxLayout.Y_AXIS));
+//        rightPanel.setMinimumSize(rightPanelMinDimension);
+//        rightPanel.setMaximumSize(rightPanelMaxDimension);
+//        rightPanel.setPreferredSize(rightPanelPreferredDimension);
+        rightPanel.setLayout(new BorderLayout());
         rightPanel.setBorder(new CompoundBorder(new EmptyBorder(1, 1, 1, 1),
                 new BevelBorder(BevelBorder.LOWERED)));
 
@@ -163,16 +168,16 @@ public class MainFrame extends JFrame {
         sizeSubPanel.setLayout(sizeSubLayout);
 
         //Create label
-        sizeLabel = new JLabel("Size of desk: ");
+        sizeLabel = new JLabel("Размер доски: ");
         sizeLabel.setAlignmentX(JLabel.CENTER);
         sizeLabel.setFont(new Font(Font.MONOSPACED, Font.BOLD, 14));
 
 
         //Create spinner
         sizeSpinner = new JSpinner(new SpinnerNumberModel(4, 4, 64, 1));
-        sizeSpinner.setMinimumSize(spinnerMinDimension);
-        sizeSpinner.setMaximumSize(spinnerMaxDimension);
-        sizeSpinner.setPreferredSize(spinnerPreferredDimension);
+//        sizeSpinner.setMinimumSize(spinnerMinDimension);
+//        sizeSpinner.setMaximumSize(spinnerMaxDimension);
+//        sizeSpinner.setPreferredSize(spinnerPreferredDimension);
         sizeSpinner.addChangeListener(new ChangeListener() {
             @Override
             public void stateChanged(ChangeEvent e) {
@@ -184,11 +189,11 @@ public class MainFrame extends JFrame {
         //Add to sub panel
         sizeSubPanel.add(sizeLabel);
         sizeSubPanel.add(sizeSpinner);
-        sizeSubPanel.setMinimumSize(new Dimension(225, 50));
-        sizeSubPanel.setMaximumSize(new Dimension(300, 50));
-        sizeSubPanel.setPreferredSize(new Dimension(250, 50));
-        sizeSubPanel.setBorder(new EmptyBorder(5, 15, 5, 5));
-
+//        sizeSubPanel.setMinimumSize(new Dimension(225, 50));
+//        sizeSubPanel.setMaximumSize(new Dimension(300, 50));
+//        sizeSubPanel.setPreferredSize(new Dimension(250, 50));
+        sizeSubPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
+        //sizeSubPanel.setAlignmentX(50);
 
         //Create sub panel for buttons
         JPanel buttonsSubPanel = new JPanel();
@@ -196,10 +201,10 @@ public class MainFrame extends JFrame {
         buttonsSubPanel.setLayout(buttonsSubLayout);
 
         //Create buttons
-        startButton = new JButton("Start");
-        startButton.setMinimumSize(buttonMinDimension);
-        startButton.setMaximumSize(buttonMaxDimension);
-        startButton.setPreferredSize(buttonPreferredDimension);
+        startButton = new JButton("Запустить перебор");
+//        startButton.setMinimumSize(buttonMinDimension);
+//        startButton.setMaximumSize(buttonMaxDimension);
+//        startButton.setPreferredSize(buttonPreferredDimension);
         startButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -213,11 +218,11 @@ public class MainFrame extends JFrame {
             }
         });
 
-        nextButton = new JButton("Next");
+        nextButton = new JButton("Следующая расстановка");
         nextButton.setEnabled(false);
-        nextButton.setMinimumSize(buttonMinDimension);
-        nextButton.setMaximumSize(buttonMaxDimension);
-        nextButton.setPreferredSize(buttonPreferredDimension);
+//        nextButton.setMinimumSize(buttonMinDimension);
+//        nextButton.setMaximumSize(buttonMaxDimension);
+//        nextButton.setPreferredSize(buttonPreferredDimension);
         nextButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -235,11 +240,11 @@ public class MainFrame extends JFrame {
             }
         });
 
-        preButton = new JButton("Prev");
+        preButton = new JButton("Предыдущая расстановка");
         preButton.setEnabled(false);
-        preButton.setMinimumSize(buttonMinDimension);
-        preButton.setMaximumSize(buttonMaxDimension);
-        preButton.setPreferredSize(buttonPreferredDimension);
+//        preButton.setMinimumSize(buttonMinDimension);
+//        preButton.setMaximumSize(buttonMaxDimension);
+//        preButton.setPreferredSize(buttonPreferredDimension);
         preButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -262,29 +267,37 @@ public class MainFrame extends JFrame {
         buttonsSubPanel.add(nextButton);
         buttonsSubPanel.add(Box.createVerticalStrut(5));
         buttonsSubPanel.add(preButton);
-        buttonsSubPanel.setMinimumSize(new Dimension(255, 250));
-        buttonsSubPanel.setMaximumSize(new Dimension(300, 250));
-        buttonsSubPanel.setPreferredSize(new Dimension(350, 250));
-        buttonsSubPanel.setBorder(new EmptyBorder(5, 5, 5, 55));
+//        buttonsSubPanel.setMinimumSize(new Dimension(155, 250));
+//        buttonsSubPanel.setMaximumSize(new Dimension(250, 250));
+//        buttonsSubPanel.setPreferredSize(new Dimension(155, 250));
+//        buttonsSubPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
+//        buttonsSubPanel.setAlignmentX(100);
 
 
         //Create button group panel
         JPanel modePanel = new JPanel();
         modePanel.setLayout(new BoxLayout(modePanel, BoxLayout.Y_AXIS));
-        modePanel.setBorder(new CompoundBorder(new EmptyBorder(5, 25, 5, 5),
-                new BevelBorder(BevelBorder.LOWERED)));
+//        modePanel.setBorder(new CompoundBorder(new EmptyBorder(5, 5, 5, 5),
+//                new BevelBorder(BevelBorder.LOWERED)));
+        //modePanel.setAlignmentX(100);
         ButtonGroup modeGroup = new ButtonGroup();
-        autoMode = new JRadioButton("Auto mode");
+        autoMode = new JRadioButton("Автоматический перебор");
         autoMode.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                startButton.setText("Запустить перебор");
+                nextButton.setText("Следующая расстановка");
+                preButton.setText("Предыдущая расстановка");
                 isManual = false;
             }
         });
-        manualMode = new JRadioButton("Manual mode");
+        manualMode = new JRadioButton("Ручной перебор");
         manualMode.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                startButton.setText("Сгенерировать шаги алгоритма");
+                nextButton.setText("Следующий шаг");
+                preButton.setText("Предыдущий шаг");
                 isManual = true;
             }
         });
@@ -293,12 +306,15 @@ public class MainFrame extends JFrame {
         autoMode.setSelected(true);
         modePanel.add(autoMode);
         modePanel.add(manualMode);
-        rightPanel.add(Box.createVerticalStrut(10));
-        rightPanel.add(sizeSubPanel);
-        rightPanel.add(Box.createVerticalStrut(25));
-        rightPanel.add(modePanel);
-        rightPanel.add(Box.createVerticalStrut(55));
-        rightPanel.add(buttonsSubPanel);
+//        rightPanel.add(Box.createVerticalStrut(10));
+//        rightPanel.add(sizeSubPanel);
+//        rightPanel.add(Box.createVerticalStrut(25));
+//        rightPanel.add(modePanel);
+//        rightPanel.add(Box.createVerticalStrut(55));
+//        rightPanel.add(buttonsSubPanel);
+        rightPanel.add(sizeSubPanel, BorderLayout.NORTH);
+        rightPanel.add(modePanel, BorderLayout.CENTER);
+        rightPanel.add(buttonsSubPanel, BorderLayout.SOUTH);
 
     }
 
@@ -325,12 +341,12 @@ public class MainFrame extends JFrame {
             JMenu temp = (JMenu) obj;
             if (temp == null) return;
             String menuName = temp.getText();
-            if (menuName.equals("Save")) {
+            if (menuName.equals("Сохранить")) {
                 saveAction();
-            } else if (menuName.equals("Open")) {
+            } else if (menuName.equals("Открыть")) {
                 openAction();
 
-            } else if (menuName.equals("Info")) {
+            } else if (menuName.equals("Информация")) {
                 infoAction();
             }
         }
