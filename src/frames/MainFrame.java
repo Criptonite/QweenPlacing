@@ -58,6 +58,8 @@ public class MainFrame extends JFrame {
 
     private boolean isManual;
 
+    private StatusPanel statusPanel;
+
 
     /**
      * Constructor
@@ -129,6 +131,8 @@ public class MainFrame extends JFrame {
         graphPanel.setBorder(new CompoundBorder(new EmptyBorder(1, 1, 1, 1),
                 new BevelBorder(BevelBorder.LOWERED)));
         leftPanel.add(graphPanel, BorderLayout.CENTER);
+        statusPanel = new StatusPanel(leftPanel);
+        leftPanel.add(statusPanel, BorderLayout.SOUTH);
     }
 
     /**
@@ -167,6 +171,7 @@ public class MainFrame extends JFrame {
                 startButton.setEnabled(false);
                 toStartCondition();
                 graphPanel.updateUI();
+                statusPanel.setText("Размер доски изменён");
             }
         });
 
@@ -176,9 +181,9 @@ public class MainFrame extends JFrame {
         generateButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
+                statusPanel.setText("Алгоритм рассчитывает возможные перестановки");
                 graphPanel.searchSolutions();
-
+                statusPanel.setText("Алгоритм завершил подсчет перестановок");
             }
         });
 
@@ -207,13 +212,15 @@ public class MainFrame extends JFrame {
                 toStartCondition();
                 if (isManual) {
                     graphPanel.drawCombination(index++);
+                    nextButton.setEnabled(true);
+                    statusPanel.printStep(index);
                 } else {
                     sizeSpinner.setEnabled(false);
                     startButton.setEnabled(false);
-
+                    statusPanel.setText("Автоматический перебор шагов алгоритма");
                     graphPanel.drawCombinations();
 
-                    graphPanel.drawCombination(0);
+                    //graphPanel.drawCombination(0);
                 }
                 factor = 1;
             }
@@ -232,17 +239,20 @@ public class MainFrame extends JFrame {
                 System.out.println(index);
                 graphPanel.drawCombination(index++);
                 int arrSize;
-                if (isManual)
+                if (isManual) {
                     arrSize = graphPanel.getStepsArray().size();
+                    statusPanel.printStep(index);
+                }
                 else {
                     arrSize = graphPanel.getCombinationsArray().size();
+                    statusPanel.printCombination(index);
                 }
                 if (index > arrSize - 1) {
                     nextButton.setEnabled(false);
                 }
 
-
-                preButton.setEnabled(true);
+                if(index>1)
+                    preButton.setEnabled(true);
 
                 factor = 1;
             }
@@ -261,6 +271,11 @@ public class MainFrame extends JFrame {
                 if (factor == 1) index -= 2;
                 System.out.println(index);
                 graphPanel.drawCombination(index--);
+                if (isManual)
+                    statusPanel.printStep(index+2);
+                else{
+                    statusPanel.printCombination(index+2);
+                }
 
                 nextButton.setEnabled(true);
                 if (index < 0) {

@@ -27,4 +27,12 @@ public class StatusPanel extends JPanel {
         statusLabel.setText(text);
     }
 
+    public void printStep(Integer index){
+        setText("Отображается шаг " + index.toString());
+    }
+
+    public void printCombination(Integer index){
+        setText("Отображается расстановка " + index.toString());
+    }
+
 }
