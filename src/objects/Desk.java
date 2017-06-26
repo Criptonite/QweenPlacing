@@ -1,7 +1,5 @@
 package objects;
 
-import algorythm.Algorithm;
-import algorythm.Backtracking;
 import algorythm.ManualBacktracking;
 
 import java.awt.*;
@@ -23,8 +21,10 @@ public class Desk {
     private double cellSize;
     Graphics2D graphics2D;
     private Cell[][] cellMatrix;
-    private Algorithm backtracking;
+    private ManualBacktracking backtracking;
     private GraphPanel graphPanel; //NEED
+    private ArrayList<Cell[][]> steps;
+    private ArrayList<Cell[][]> combinations;
 
     /**
      * Method initializing cell matrix
@@ -105,25 +105,32 @@ public class Desk {
     }
 
 
-    public void searchSolutions(String mode) {
-        if("manual".equals(mode)) {
-            backtracking = new ManualBacktracking(this, graphPanel);
-        } else {
-            backtracking = new Backtracking(this, graphPanel);
-        }
-        Thread backtrackingTask = new Thread(backtracking);
-        backtrackingTask.start();
-
+    public void searchSolutions() {
+        backtracking = new ManualBacktracking(this);
+        backtracking.run();
     }
 
     public void notifyPanel() {
-        graphPanel.setCombinationsArray(getCombinations());
+        graphPanel.setStepsArray(steps);
+        graphPanel.setCombinationsArray(combinations);
         graphPanel.getFrame().getNextButton().setEnabled(true);
     }
 
 
     public ArrayList<Cell[][]> getCombinations() {
-        return backtracking.getCombinations();
+        return combinations;
+    }
+
+    public ArrayList<Cell[][]> getSteps() {
+        return steps;
+    }
+
+    public void setSteps(ArrayList<Cell[][]> steps) {
+        this.steps = steps;
+    }
+
+    public void setCombinations(ArrayList<Cell[][]> combinations) {
+        this.combinations = combinations;
     }
 
     public void setCellMatrix(Cell[][] cellMatrix) {
