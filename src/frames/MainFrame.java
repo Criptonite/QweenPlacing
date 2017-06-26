@@ -329,7 +329,7 @@ public class MainFrame extends JFrame {
      * Method for setting buttons behavior in runtime
      */
     private void toStartCondition() {
-        Desk desk = new Desk((int) sizeSpinner.getValue(), graphPanel, (Graphics2D) graphPanel.getGraphics());
+        Desk desk = new Desk((int) sizeSpinner.getValue(), graphPanel.getWidth());
         graphPanel.setDesk(desk);
         factor = 1;
         index = 0;
