@@ -1,6 +1,6 @@
 package objects;
 
-import algorythm.ManualBacktracking;
+import algorythm.Backtracking;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;
@@ -21,7 +21,7 @@ public class Desk {
     private double cellSize;
     Graphics2D graphics2D;
     private Cell[][] cellMatrix;
-    private ManualBacktracking backtracking;
+    private Backtracking backtracking;
     private GraphPanel graphPanel; //NEED
     private ArrayList<Cell[][]> steps;
     private ArrayList<Cell[][]> combinations;
@@ -106,14 +106,8 @@ public class Desk {
 
 
     public void searchSolutions() {
-        backtracking = new ManualBacktracking(this);
+        backtracking = new Backtracking(this);
         backtracking.run();
-    }
-
-    public void notifyPanel() {
-        graphPanel.setStepsArray(steps);
-        graphPanel.setCombinationsArray(combinations);
-        graphPanel.getFrame().getNextButton().setEnabled(true);
     }
 
 

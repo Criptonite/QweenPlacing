@@ -9,7 +9,7 @@ import java.util.ArrayList;
 /**
  * Created by Daniil on 24.06.2017.
  */
-public class ManualBacktracking {
+public class Backtracking {
 
     private Desk desk;
     private ArrayList<Cell[][]> steps;
@@ -17,7 +17,7 @@ public class ManualBacktracking {
     private Cell[][] matrix;
 
 
-    public ManualBacktracking(Desk desk) {
+    public Backtracking(Desk desk) {
         this.desk = desk;
         this.steps = new ArrayList<>();
         this.combinations = new ArrayList<>();
@@ -145,15 +145,6 @@ public class ManualBacktracking {
         }
     }
 
-    public ArrayList<Cell[][]> getCombinations() {
-        return combinations;
-    }
-
-    public ArrayList<Cell[][]> getSteps() {
-        return steps;
-    }
-
-
     private void addStep() {
         int size = matrix.length;
         Cell[][] newStep = new Cell[size][size];
@@ -177,11 +168,8 @@ public class ManualBacktracking {
     }
 
     public void run() {
-                combinations.clear();
-                steps.clear();
         tryQueen(0, 0, matrix.length, 0);
         desk.setCombinations(combinations);
         desk.setSteps(steps);
-        desk.notifyPanel();
     }
 }

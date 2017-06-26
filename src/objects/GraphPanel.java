@@ -50,12 +50,12 @@ public class GraphPanel extends JPanel {
         desk.searchSolutions();
         combinationsArray = desk.getCombinations();
         stepsArray = desk.getSteps();
+        frame.getNextButton().setEnabled(true);
     }
 
     public void drawCombination(int index){
         System.out.println(index);
         if("manual".equals(mode))
-        //combinationsArray = desk.getCombinations();
             desk.setCellMatrix(stepsArray.get(index));
         else{
             desk.setCellMatrix(combinationsArray.get(index));
@@ -67,20 +67,8 @@ public class GraphPanel extends JPanel {
         return combinationsArray;
     }
 
-    public void setCombinationsArray(ArrayList<Cell[][]> combinationsArray) {
-        this.combinationsArray = combinationsArray;
-    }
-
     public ArrayList<Cell[][]> getStepsArray() {
         return stepsArray;
-    }
-
-    public void setStepsArray(ArrayList<Cell[][]> stepsArray) {
-        this.stepsArray = stepsArray;
-    }
-
-    public MainFrame getFrame() {
-        return frame;
     }
 
     public void setDesk(Desk desk) {
