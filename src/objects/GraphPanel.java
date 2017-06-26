@@ -21,6 +21,10 @@ public class GraphPanel extends JPanel {
 
     private ArrayList<Cell[][]> combinationsArray;
 
+    private ArrayList<Cell[][]> stepsArray;
+
+    private String mode;
+
     public GraphPanel(MainFrame frame) {
         this.frame = frame;
     }
@@ -42,13 +46,20 @@ public class GraphPanel extends JPanel {
      * Entry point to algorithm visualizing
      */
     public void searchSolutions(String mode) {
-        desk.searchSolutions(mode);
+        this.mode = mode;
+        desk.searchSolutions();
+        combinationsArray = desk.getCombinations();
+        stepsArray = desk.getSteps();
     }
 
     public void drawCombination(int index){
         System.out.println(index);
-        combinationsArray = desk.getCombinations();
-        desk.setCellMatrix(combinationsArray.get(index));
+        if("manual".equals(mode))
+        //combinationsArray = desk.getCombinations();
+            desk.setCellMatrix(stepsArray.get(index));
+        else{
+            desk.setCellMatrix(combinationsArray.get(index));
+        }
         this.updateUI();
     }
 
@@ -58,6 +69,14 @@ public class GraphPanel extends JPanel {
 
     public void setCombinationsArray(ArrayList<Cell[][]> combinationsArray) {
         this.combinationsArray = combinationsArray;
+    }
+
+    public ArrayList<Cell[][]> getStepsArray() {
+        return stepsArray;
+    }
+
+    public void setStepsArray(ArrayList<Cell[][]> stepsArray) {
+        this.stepsArray = stepsArray;
     }
 
     public MainFrame getFrame() {
