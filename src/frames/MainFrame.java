@@ -24,6 +24,8 @@ public class MainFrame extends JFrame {
 
     private JLabel sizeLabel;
 
+    private JButton generateButton;
+
     private JButton startButton;
 
     private JButton nextButton;
@@ -76,7 +78,7 @@ public class MainFrame extends JFrame {
         factor = 1;
         setTitle("Расстановка ферзей на доске");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        //setMinimumSize(new Dimension(800, 450));
+        setMinimumSize(new Dimension(800, 540));
         getContentPane().setLayout(new BoxLayout(getContentPane(), BoxLayout.X_AXIS));
 
         initMenuBar();
@@ -113,9 +115,9 @@ public class MainFrame extends JFrame {
      */
     private void initLeftPanel() {
         //Left panel dimension
-        Dimension leftPanelMinDimension = new Dimension(250, getHeight());
-        Dimension leftPanelMaxDimension = new Dimension(450, getHeight());
-        Dimension leftPanelPreferredDimension = new Dimension(350, getHeight());
+        Dimension leftPanelMinDimension = new Dimension(400, getHeight());
+        Dimension leftPanelMaxDimension = new Dimension(600, getHeight());
+        Dimension leftPanelPreferredDimension = new Dimension(500, getHeight());
         leftPanel = new JPanel();
         leftPanel.setLayout(new BorderLayout());
 
@@ -133,30 +135,14 @@ public class MainFrame extends JFrame {
      * Initializing of right panel with spinner and buttons
      */
     private void initRightPanel() {
-
-
-//        //Create standart dimensions
-//        //Right panel dimensoin
-//        Dimension rightPanelMinDimension = new Dimension(250, getHeight());
-//        Dimension rightPanelMaxDimension = new Dimension(450, getHeight());
-//        Dimension rightPanelPreferredDimension = new Dimension(350, getHeight());
-//
-//        //Spinner dimension
-//        Dimension spinnerMinDimension = new Dimension(25, 25);
-//        Dimension spinnerMaxDimension = new Dimension(100, 25);
-//        Dimension spinnerPreferredDimension = new Dimension(50, 25);
-//
-//        //Buttons dimension
-//        Dimension buttonMinDimension = new Dimension(250, 45);
-//        Dimension buttonMaxDimension = new Dimension(350, 45);
-//        Dimension buttonPreferredDimension = new Dimension(250, 45);
+        //Buttons dimension
+        Dimension buttonMinDimension = new Dimension(250, 45);
+        Dimension buttonMaxDimension = new Dimension(350, 45);
+        Dimension buttonPreferredDimension = new Dimension(250, 45);
 
 
         //Create right panel
         rightPanel = new JPanel();
-//        rightPanel.setMinimumSize(rightPanelMinDimension);
-//        rightPanel.setMaximumSize(rightPanelMaxDimension);
-//        rightPanel.setPreferredSize(rightPanelPreferredDimension);
         rightPanel.setLayout(new BorderLayout());
         rightPanel.setBorder(new CompoundBorder(new EmptyBorder(1, 1, 1, 1),
                 new BevelBorder(BevelBorder.LOWERED)));
@@ -175,25 +161,33 @@ public class MainFrame extends JFrame {
 
         //Create spinner
         sizeSpinner = new JSpinner(new SpinnerNumberModel(4, 4, 64, 1));
-//        sizeSpinner.setMinimumSize(spinnerMinDimension);
-//        sizeSpinner.setMaximumSize(spinnerMaxDimension);
-//        sizeSpinner.setPreferredSize(spinnerPreferredDimension);
         sizeSpinner.addChangeListener(new ChangeListener() {
             @Override
             public void stateChanged(ChangeEvent e) {
+                startButton.setEnabled(false);
                 toStartCondition();
                 graphPanel.updateUI();
             }
         });
 
+
+        //Create generate button
+        generateButton = new JButton("Сгенерировать перебор");
+        generateButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+                graphPanel.searchSolutions();
+
+            }
+        });
+
+
         //Add to sub panel
         sizeSubPanel.add(sizeLabel);
         sizeSubPanel.add(sizeSpinner);
-//        sizeSubPanel.setMinimumSize(new Dimension(225, 50));
-//        sizeSubPanel.setMaximumSize(new Dimension(300, 50));
-//        sizeSubPanel.setPreferredSize(new Dimension(250, 50));
+        sizeSubPanel.add(generateButton);
         sizeSubPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
-        //sizeSubPanel.setAlignmentX(50);
 
         //Create sub panel for buttons
         JPanel buttonsSubPanel = new JPanel();
@@ -201,28 +195,36 @@ public class MainFrame extends JFrame {
         buttonsSubPanel.setLayout(buttonsSubLayout);
 
         //Create buttons
-        startButton = new JButton("Запустить перебор");
-//        startButton.setMinimumSize(buttonMinDimension);
-//        startButton.setMaximumSize(buttonMaxDimension);
-//        startButton.setPreferredSize(buttonPreferredDimension);
+        startButton = new JButton("Автоматический перебор");
+        startButton.setEnabled(false);
+        startButton.setAlignmentX(Component.CENTER_ALIGNMENT);
+        startButton.setMinimumSize(buttonMinDimension);
+        startButton.setMaximumSize(buttonMaxDimension);
+        startButton.setPreferredSize(buttonPreferredDimension);
         startButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 toStartCondition();
                 if (isManual) {
-                    graphPanel.searchSolutions("manual");
+                    graphPanel.drawCombination(index++);
                 } else {
-                    graphPanel.searchSolutions("auto");
+                    sizeSpinner.setEnabled(false);
+                    startButton.setEnabled(false);
+
+                    graphPanel.drawCombinations();
+
+                    graphPanel.drawCombination(0);
                 }
-                graphPanel.updateUI();
+                factor = 1;
             }
         });
 
         nextButton = new JButton("Следующая расстановка");
+        nextButton.setAlignmentX(Component.CENTER_ALIGNMENT);
         nextButton.setEnabled(false);
-//        nextButton.setMinimumSize(buttonMinDimension);
-//        nextButton.setMaximumSize(buttonMaxDimension);
-//        nextButton.setPreferredSize(buttonPreferredDimension);
+        nextButton.setMinimumSize(buttonMinDimension);
+        nextButton.setMaximumSize(buttonMaxDimension);
+        nextButton.setPreferredSize(buttonPreferredDimension);
         nextButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -232,7 +234,7 @@ public class MainFrame extends JFrame {
                 int arrSize;
                 if (isManual)
                     arrSize = graphPanel.getStepsArray().size();
-                else{
+                else {
                     arrSize = graphPanel.getCombinationsArray().size();
                 }
                 if (index > arrSize - 1) {
@@ -247,10 +249,11 @@ public class MainFrame extends JFrame {
         });
 
         preButton = new JButton("Предыдущая расстановка");
+        preButton.setAlignmentX(Component.CENTER_ALIGNMENT);
         preButton.setEnabled(false);
-//        preButton.setMinimumSize(buttonMinDimension);
-//        preButton.setMaximumSize(buttonMaxDimension);
-//        preButton.setPreferredSize(buttonPreferredDimension);
+        preButton.setMinimumSize(buttonMinDimension);
+        preButton.setMaximumSize(buttonMaxDimension);
+        preButton.setPreferredSize(buttonPreferredDimension);
         preButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -273,38 +276,41 @@ public class MainFrame extends JFrame {
         buttonsSubPanel.add(nextButton);
         buttonsSubPanel.add(Box.createVerticalStrut(5));
         buttonsSubPanel.add(preButton);
-//        buttonsSubPanel.setMinimumSize(new Dimension(155, 250));
-//        buttonsSubPanel.setMaximumSize(new Dimension(250, 250));
-//        buttonsSubPanel.setPreferredSize(new Dimension(155, 250));
-//        buttonsSubPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
-//        buttonsSubPanel.setAlignmentX(100);
-
 
         //Create button group panel
         JPanel modePanel = new JPanel();
         modePanel.setLayout(new BoxLayout(modePanel, BoxLayout.Y_AXIS));
-//        modePanel.setBorder(new CompoundBorder(new EmptyBorder(5, 5, 5, 5),
-//                new BevelBorder(BevelBorder.LOWERED)));
-        //modePanel.setAlignmentX(100);
         ButtonGroup modeGroup = new ButtonGroup();
         autoMode = new JRadioButton("Автоматический перебор");
         autoMode.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                startButton.setText("Запустить перебор");
+                factor = 1;
+                index = 0;
+                graphPanel.setMode("auto");
+                startButton.setText("Начать автоматический перебор");
+                nextButton.setEnabled(false);
+                preButton.setEnabled(false);
                 nextButton.setText("Следующая расстановка");
                 preButton.setText("Предыдущая расстановка");
                 isManual = false;
+                toStartCondition();
             }
         });
         manualMode = new JRadioButton("Ручной перебор");
         manualMode.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                startButton.setText("Сгенерировать шаги алгоритма");
+                factor = 1;
+                index = 0;
+                graphPanel.setMode("manual");
+                startButton.setText("Начать ручной перебор");
+                nextButton.setEnabled(false);
+                preButton.setEnabled(false);
                 nextButton.setText("Следующий шаг");
                 preButton.setText("Предыдущий шаг");
                 isManual = true;
+                toStartCondition();
             }
         });
         modeGroup.add(autoMode);
@@ -312,12 +318,6 @@ public class MainFrame extends JFrame {
         autoMode.setSelected(true);
         modePanel.add(autoMode);
         modePanel.add(manualMode);
-//        rightPanel.add(Box.createVerticalStrut(10));
-//        rightPanel.add(sizeSubPanel);
-//        rightPanel.add(Box.createVerticalStrut(25));
-//        rightPanel.add(modePanel);
-//        rightPanel.add(Box.createVerticalStrut(55));
-//        rightPanel.add(buttonsSubPanel);
         rightPanel.add(sizeSubPanel, BorderLayout.NORTH);
         rightPanel.add(modePanel, BorderLayout.CENTER);
         rightPanel.add(buttonsSubPanel, BorderLayout.SOUTH);
@@ -335,6 +335,7 @@ public class MainFrame extends JFrame {
         index = 0;
         nextButton.setEnabled(false);
         preButton.setEnabled(false);
+        graphPanel.updateUI();
     }
 
 
@@ -396,7 +397,16 @@ public class MainFrame extends JFrame {
      *
      * @return next button
      */
+    public JButton getStartButton() {
+        return startButton;
+    }
+
+    public JSpinner getSizeSpinner() {
+        return sizeSpinner;
+    }
+
     public JButton getNextButton() {
         return nextButton;
     }
 }
+
