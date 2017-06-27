@@ -1,13 +1,14 @@
 package objects;
 
 import java.awt.*;
+import java.io.Serializable;
 
 /**
  * Created by Daniil on 21.06.2017.
  * Extended by Dmitriy on 23.06.2017.
  * Extend by Ruslan on 22.06.2017.
  */
-public class Cell extends Rectangle implements Cloneable{
+public class Cell extends Rectangle implements Cloneable, Serializable{
 
     private Color color;
     private Color standardColor;

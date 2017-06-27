@@ -14,6 +14,8 @@ import javax.swing.event.MenuListener;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
+import java.io.IOException;
 
 
 /**
@@ -60,6 +62,8 @@ public class MainFrame extends JFrame {
 
     private StatusPanel statusPanel;
 
+    private JFileChooser fileDialog;
+
 
     /**
      * Constructor
@@ -80,7 +84,7 @@ public class MainFrame extends JFrame {
         factor = 1;
         setTitle("Расстановка ферзей на доске");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setMinimumSize(new Dimension(800, 540));
+        setMinimumSize(new Dimension(800, 505));
         getContentPane().setLayout(new BoxLayout(getContentPane(), BoxLayout.X_AXIS));
 
         initMenuBar();
@@ -242,8 +246,7 @@ public class MainFrame extends JFrame {
                 if (isManual) {
                     arrSize = graphPanel.getStepsArray().size();
                     statusPanel.printStep(index);
-                }
-                else {
+                } else {
                     arrSize = graphPanel.getCombinationsArray().size();
                     statusPanel.printCombination(index);
                 }
@@ -251,7 +254,7 @@ public class MainFrame extends JFrame {
                     nextButton.setEnabled(false);
                 }
 
-                if(index>1)
+                if (index > 1)
                     preButton.setEnabled(true);
 
                 factor = 1;
@@ -272,9 +275,9 @@ public class MainFrame extends JFrame {
                 System.out.println(index);
                 graphPanel.drawCombination(index--);
                 if (isManual)
-                    statusPanel.printStep(index+2);
-                else{
-                    statusPanel.printCombination(index+2);
+                    statusPanel.printStep(index + 2);
+                else {
+                    statusPanel.printCombination(index + 2);
                 }
 
                 nextButton.setEnabled(true);
@@ -359,18 +362,17 @@ public class MainFrame extends JFrame {
 
         @Override
         public void menuSelected(MenuEvent e) {
-            Object obj = e.getSource();
-            JMenu temp = (JMenu) obj;
-            if (temp == null) return;
-            String menuName = temp.getText();
-            if (menuName.equals("Сохранить")) {
+            if (e.getSource() == saveMenu) {
                 saveAction();
-            } else if (menuName.equals("Открыть")) {
+            } else if (e.getSource() == openMenu) {
                 openAction();
 
-            } else if (menuName.equals("Информация")) {
+            } else if (e.getSource() == infoMenu) {
                 infoAction();
             }
+            this.menuDeselected(e);
+            this.menuCanceled(e);
+            menuBar.updateUI();
         }
 
         @Override
@@ -381,18 +383,48 @@ public class MainFrame extends JFrame {
         @Override
         public void menuCanceled(MenuEvent e) {
             //DO NOTHING
+
         }
-    }
 
-    //Will be use for implementing menu behavior. Will be implemented later
-    private void saveAction() {
-    }
+        //Will be use for implementing menu behavior. Will be implemented later
+        private void saveAction() {
+            fileDialog = new JFileChooser("C://");
+            int selectionRes = fileDialog.showDialog(MainFrame.this, "Сохранить файл");
+            if (selectionRes == JFileChooser.APPROVE_OPTION) {
+                File file = fileDialog.getSelectedFile();
+                String path = "";
+                try {
+                    path = file.getCanonicalPath();
+                } catch (IOException e) {
+                    System.out.println("Проблемы с сохранением файла");
+                    e.printStackTrace();
+                }
+                System.out.println(path);
 
-    private void openAction() {
-    }
+            }
+        }
 
+        private void openAction() {
+            fileDialog = new JFileChooser("C://");
+            int selectionRes = fileDialog.showDialog(MainFrame.this, "Открыть файл");
+            if (selectionRes == JFileChooser.APPROVE_OPTION) {
+                File file = fileDialog.getSelectedFile();
+                String path = "";
+                try {
+                    path = file.getCanonicalPath();
+                } catch (IOException e) {
+                    System.out.println("Проблемы с открытием файла");
+                    e.printStackTrace();
+                }
+                System.out.println(path);
 
-    private void infoAction() {
+            }
+
+        }
+
+        private void infoAction() {
+
+        }
     }
 
 

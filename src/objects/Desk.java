@@ -4,6 +4,7 @@ import algorythm.Backtracking;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
@@ -13,7 +14,7 @@ import java.util.ArrayList;
  * <p>
  * Class will redraw itself when it'is necessary.
  */
-public class Desk {
+public class Desk implements Serializable{
 
     //Image owner needs to be implemented in separate class
     private int size;
