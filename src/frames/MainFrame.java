@@ -251,7 +251,8 @@ public class MainFrame extends JFrame {
                     isStopable = true;
                     sizeSpinner.setEnabled(false);
                     statusPanel.setText("Автоматический перебор шагов алгоритма");
-                    graphPanel.drawCombinations();}
+                    graphPanel.drawCombinations();
+                    }
                 }
                 factor = 1;
             }
@@ -438,6 +439,10 @@ public class MainFrame extends JFrame {
 
     public boolean isManual() {
         return isManual;
+    }
+
+    public void setStopable(boolean stopable) {
+        isStopable = stopable;
     }
 }
 
