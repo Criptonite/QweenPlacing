@@ -18,7 +18,7 @@ public class StatusPanel extends JPanel {
         this.setBorder(new BevelBorder(BevelBorder.LOWERED));
         this.setPreferredSize(new Dimension(frame.getWidth(), 16));
         this.setLayout(new BoxLayout(this, BoxLayout.X_AXIS));
-        statusLabel = new JLabel("status");
+        statusLabel = new JLabel("Программа запущена");
         statusLabel.setHorizontalAlignment(SwingConstants.LEFT);
         this.add(statusLabel);
     }

@@ -311,6 +311,7 @@ public class MainFrame extends JFrame {
                 preButton.setEnabled(false);
                 nextButton.setText("Следующая расстановка");
                 preButton.setText("Предыдущая расстановка");
+                statusPanel.setText("Выбран автоматический режим работы");
                 isManual = false;
                 toStartCondition();
             }
@@ -327,6 +328,7 @@ public class MainFrame extends JFrame {
                 preButton.setEnabled(false);
                 nextButton.setText("Следующий шаг");
                 preButton.setText("Предыдущий шаг");
+                statusPanel.setText("Выбран ручной режим работы");
                 isManual = true;
                 toStartCondition();
             }
