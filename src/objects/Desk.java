@@ -14,13 +14,13 @@ import java.util.ArrayList;
  * <p>
  * Class will redraw itself when it'is necessary.
  */
-public class Desk implements Serializable{
+public class Desk{
 
     //Image owner needs to be implemented in separate class
     private int size;
     private double cellSize;
     private Cell[][] cellMatrix;
-    private Backtracking backtracking;
+    private transient Backtracking backtracking;
     private ArrayList<Cell[][]> steps;
     private ArrayList<Cell[][]> combinations;
 
@@ -88,4 +88,6 @@ public class Desk implements Serializable{
     public double getCellSize() {
         return cellSize;
     }
+
+
 }
