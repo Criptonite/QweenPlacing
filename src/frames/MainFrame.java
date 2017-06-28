@@ -14,6 +14,8 @@ import javax.swing.event.MenuListener;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.io.File;
 import java.io.IOException;
 
@@ -99,10 +101,21 @@ public class MainFrame extends JFrame {
     private void initMenuBar() {
         menuBar = new JMenuBar();
         infoMenu = new JMenu("О программе");
-        infoMenu.addMenuListener(new MenuListener() {
+        infoMenu.addMouseListener(new MouseAdapter() {
             @Override
-            public void menuSelected(MenuEvent e) {
-                if (e.getSource() == infoMenu) {
+            public void mouseEntered(MouseEvent e) {
+                JMenu infoMenu = (JMenu) e.getSource();
+                infoMenu.setSelected(true);
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e) {
+                JMenu infoMenu = (JMenu) e.getSource();
+                infoMenu.setSelected(false);
+            }
+
+            @Override
+            public void mouseClicked(MouseEvent e) { menuBar.updateUI();
                     JOptionPane.showMessageDialog(null,
                             "Программа визуализирует процесс выполнения алгоритма backtracking в задаче «Расстановка ферзей»,\n" +
                                     "которая заключается в поиске расстановок N ферзей на шахматной доске размера NxN.\n\n\n" +
@@ -112,20 +125,6 @@ public class MainFrame extends JFrame {
                                     "Кадыров Руслан ()\n",
                             "Информация о программе",
                             JOptionPane.INFORMATION_MESSAGE);
-                }
-                this.menuDeselected(e);
-                this.menuCanceled(e);
-                menuBar.updateUI();
-            }
-
-            @Override
-            public void menuDeselected(MenuEvent e) {
-                menuBar.updateUI();
-            }
-
-            @Override
-            public void menuCanceled(MenuEvent e) {
-
             }
         });
         menuBar.add(infoMenu);
