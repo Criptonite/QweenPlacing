@@ -15,7 +15,7 @@ import java.util.ArrayList;
  */
 public class GraphPanel extends JPanel {
 
-    private static final int DELAY_TIME = 100;
+    private static final int DELAY_TIME = 50;
 
     private MainFrame frame;
 
@@ -23,11 +23,17 @@ public class GraphPanel extends JPanel {
 
     private Desk desk;
 
+    private Thread drawingTask;
+
+    private Cell[][] cells;
+
     private ArrayList<Cell[][]> combinationsArray;
 
     private ArrayList<Cell[][]> stepsArray;
 
     private String mode;
+
+    private boolean wasInterupted;
 
     public GraphPanel(MainFrame frame) {
         this.mode = "auto";
@@ -41,6 +47,7 @@ public class GraphPanel extends JPanel {
         int size = frame.getSpinnerValue();
         if (desk == null) {
             desk = new Desk(size, this.getWidth());
+            cells = desk.getCellMatrix();
         }
 
         paintDesk();
@@ -56,39 +63,58 @@ public class GraphPanel extends JPanel {
         frame.getStartButton().setEnabled(true);
     }
 
-    public void drawCombination(int index){
+    public void drawCombination(int index) {
+        System.out.println(index);
         if("manual".equals(mode))
             desk.setCellMatrix(stepsArray.get(index));
-        else if("auto".equals(mode)){
+        else if ("auto".equals(mode)) {
             desk.setCellMatrix(combinationsArray.get(index));
         }
         this.updateUI();
     }
 
-    public void drawCombinations(){
-        new Thread(new Runnable() {
+    public void drawCombinations() {
+        drawingTask = new Thread(new Runnable() {
             @Override
             public void run() {
-                for(Cell[][] comb : stepsArray){
+                for (Cell[][] comb : stepsArray) {
+                    if (Thread.currentThread().isInterrupted()) {
+                        wasInterupted = true;
+                        break;
+                    }
                     desk.setCellMatrix(comb);
                     updateUI();
-                    delay(DELAY_TIME);
+                    try {
+                        delay(DELAY_TIME);
+                    } catch (InterruptedException e) {
+                        System.out.println("Поток был потревожен");
+                        wasInterupted = true;
+                        break;
+                    }
+                }
+                if (wasInterupted) {
+                    frame.getStatusPanel().setText("Автоматический перебор был прерван");
+                    desk.setCellMatrix(cells);
+                    updateUI();
                 }
                 frame.getSizeSpinner().setEnabled(true);
-                frame.getStartButton().setEnabled(true);
-                frame.getNextButton().setEnabled(true);
+                if(!wasInterupted){
+                    frame.getStatusPanel().setText("Автоматический перебор был успешно завершен");
+                    frame.getNextButton().setEnabled(true);
+                }
+                frame.getStartButton().setText("Начать автоматический перебор");
+                wasInterupted = false;
+                frame.setStopable(false);
+
             }
-        }).start();
+        });
+
+        drawingTask.start();
 
     }
 
-    private void delay(int milis){
-        try {
-            Thread.sleep(milis);
-        } catch (InterruptedException e) {
-            System.out.println("Thread was interrupted");
-            e.printStackTrace();
-        }
+    private void delay(int milis) throws InterruptedException {
+        Thread.sleep(milis);
     }
 
 
@@ -102,16 +128,21 @@ public class GraphPanel extends JPanel {
 
     public void setDesk(Desk desk) {
         this.desk = desk;
+        cells = desk.getCellMatrix();
+    }
+
+    public Thread getDrawingTask() {
+        return drawingTask;
     }
 
     /**
      * Method painting desk
      */
-    private void paintDesk(){
+    private void paintDesk() {
         QueenImage img = new QueenImage();
         BufferedImage qweenImage = img.resize((int) desk.getCellSize(), (int) desk.getCellSize());
         int size = desk.getCellMatrix().length;
-        Cell [][] cellMatrix = desk.getCellMatrix();
+        Cell[][] cellMatrix = desk.getCellMatrix();
         for (int i = 0; i < size; i++) {
             for (int j = 0; j < size; j++) {
                 Cell cell = cellMatrix[i][j];
@@ -135,4 +166,9 @@ public class GraphPanel extends JPanel {
     public void setMode(String mode) {
         this.mode = mode;
     }
+
+    public Desk getDesk() {
+        return desk;
+    }
+
 }
