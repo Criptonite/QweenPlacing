@@ -119,7 +119,7 @@ public class MainFrame extends JFrame {
                                     "Разработчики:\n" +
                                     "Басин Даниил (bassindanil@hotmail.com)\n" +
                                     "Губа Дмитрий (gudmian@gmail.com)\n" +
-                                    "Кадыров Руслан ()\n",
+                                    "Кадыров Руслан (ruslan.kadyrov-rus@yandex.ru)\n",
                             "Информация о программе",
                             JOptionPane.INFORMATION_MESSAGE);
             }
