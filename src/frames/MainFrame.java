@@ -1,5 +1,6 @@
 package frames;
 
+import jdk.nashorn.internal.scripts.JO;
 import objects.Cell;
 import objects.Desk;
 import objects.GraphPanel;
@@ -196,9 +197,21 @@ public class MainFrame extends JFrame {
         generateButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                statusPanel.setText("Алгоритм рассчитывает возможные перестановки");
-                graphPanel.searchSolutions();
-                statusPanel.setText("Алгоритм завершил подсчет перестановок");
+                if((int)sizeSpinner.getValue() > 9){
+                    int dialogResult = JOptionPane.showConfirmDialog(null, "Размер доски большой.\n"+
+                    "Алгоритму потребуется больше время для вычисления\n"+
+                    "Продолжить генерацию резмещений?", "Внимание!",JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE);
+                    if(dialogResult == JOptionPane.YES_OPTION){
+                        statusPanel.setText("Алгоритм рассчитывает возможные перестановки");
+                        graphPanel.searchSolutions();
+                        statusPanel.setText("Алгоритм завершил подсчет перестановок");
+                    }
+                }
+                else {
+                    statusPanel.setText("Алгоритм рассчитывает возможные перестановки");
+                    graphPanel.searchSolutions();
+                    statusPanel.setText("Алгоритм завершил подсчет перестановок");
+                }
             }
         });
 
