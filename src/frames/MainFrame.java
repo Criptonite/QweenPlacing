@@ -225,18 +225,20 @@ public class MainFrame extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 toStartCondition();
-                if (isManual) {
-                    graphPanel.drawCombination(index++);
-                    nextButton.setEnabled(true);
-                    statusPanel.printStep(index);
-                } else if (isStopable) {
+                if (isStopable) {
                     graphPanel.getDrawingTask().interrupt();
                 } else {
+                    if (isManual) {
+                        graphPanel.drawCombination(index++);
+                        nextButton.setEnabled(true);
+                        statusPanel.printStep(index);
+                    }
+                    else{
                     startButton.setText("Остановить отрисовку");
                     isStopable = true;
                     sizeSpinner.setEnabled(false);
                     statusPanel.setText("Автоматический перебор шагов алгоритма");
-                    graphPanel.drawCombinations();
+                    graphPanel.drawCombinations();}
                 }
                 factor = 1;
             }
@@ -316,7 +318,8 @@ public class MainFrame extends JFrame {
                 factor = 1;
                 index = 0;
                 graphPanel.setMode("auto");
-                startButton.setText("Начать автоматический перебор");
+                if(!isStopable)
+                    startButton.setText("Начать автоматический перебор");
                 nextButton.setEnabled(false);
                 preButton.setEnabled(false);
                 nextButton.setText("Следующая расстановка");
@@ -333,7 +336,8 @@ public class MainFrame extends JFrame {
                 factor = 1;
                 index = 0;
                 graphPanel.setMode("manual");
-                startButton.setText("Начать ручной перебор");
+                if(!isStopable)
+                    startButton.setText("Начать ручной перебор");
                 nextButton.setEnabled(false);
                 preButton.setEnabled(false);
                 nextButton.setText("Следующий шаг");
