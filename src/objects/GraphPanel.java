@@ -15,7 +15,7 @@ import java.util.ArrayList;
  */
 public class GraphPanel extends JPanel {
 
-    private static final int DELAY_TIME = 50;
+    private int delayTime = 50;
 
     private MainFrame frame;
 
@@ -85,7 +85,7 @@ public class GraphPanel extends JPanel {
                     desk.setCellMatrix(comb);
                     updateUI();
                     try {
-                        delay(DELAY_TIME);
+                        delay(delayTime);
                     } catch (InterruptedException e) {
                         System.out.println("Поток был потревожен");
                         wasInterupted = true;
@@ -169,8 +169,9 @@ public class GraphPanel extends JPanel {
         this.mode = mode;
     }
 
-    public Desk getDesk() {
-        return desk;
+    public void setDelayTime(int delayTime) {
+        this.delayTime = delayTime;
     }
+
 
 }

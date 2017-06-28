@@ -66,7 +66,6 @@ public class MainFrame extends JFrame {
     private boolean isStopable;
 
 
-
     /**
      * Constructor
      */
@@ -364,8 +363,27 @@ public class MainFrame extends JFrame {
         modeGroup.add(autoMode);
         modeGroup.add(manualMode);
         autoMode.setSelected(true);
+
+        //Add delay slider
+        JSlider delaySlider = new JSlider(JSlider.HORIZONTAL,1,1000, 75);
+        delaySlider.setMajorTickSpacing(499);
+        delaySlider.setMinorTickSpacing(5);
+        delaySlider.setPaintTicks(false);
+        delaySlider.setPaintLabels(true);
+        graphPanel.setDelayTime(delaySlider.getValue());
+        delaySlider.addChangeListener(new ChangeListener() {
+            @Override
+            public void stateChanged(ChangeEvent e) {
+                graphPanel.setDelayTime(delaySlider.getValue());
+            }
+        });
+
+        //Add delay label
+        JLabel delayLabel = new JLabel("Время задержки шага в автоматическом режиме (мс)");
         modePanel.add(autoMode);
         modePanel.add(manualMode);
+        modePanel.add(delayLabel);
+        modePanel.add(delaySlider);
         rightPanel.add(sizeSubPanel, BorderLayout.NORTH);
         rightPanel.add(modePanel, BorderLayout.CENTER);
         rightPanel.add(buttonsSubPanel, BorderLayout.SOUTH);
