@@ -227,6 +227,7 @@ public class MainFrame extends JFrame {
                 toStartCondition();
                 if (isStopable) {
                     graphPanel.getDrawingTask().interrupt();
+                    isStopable = false;
                 } else {
                     if (isManual) {
                         graphPanel.drawCombination(index++);
@@ -404,8 +405,8 @@ public class MainFrame extends JFrame {
         return statusPanel;
     }
 
-    public void setStopable(boolean stopable) {
-        isStopable = stopable;
+    public boolean isManual() {
+        return isManual;
     }
 }
 

@@ -102,9 +102,11 @@ public class GraphPanel extends JPanel {
                     frame.getStatusPanel().setText("Автоматический перебор был успешно завершен");
                     frame.getNextButton().setEnabled(true);
                 }
-                frame.getStartButton().setText("Начать автоматический перебор");
+                if(frame.isManual())
+                    frame.getStartButton().setText("Начать ручной перебор");
+                else
+                    frame.getStartButton().setText("Начать автоматический перебор");
                 wasInterupted = false;
-                frame.setStopable(false);
 
             }
         });
