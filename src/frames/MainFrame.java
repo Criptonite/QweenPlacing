@@ -44,10 +44,6 @@ public class MainFrame extends JFrame {
 
     private JMenuBar menuBar;
 
-    private JMenu openMenu;
-
-    private JMenu saveMenu;
-
     private JMenu infoMenu;
 
     private JRadioButton autoMode;
@@ -71,7 +67,6 @@ public class MainFrame extends JFrame {
     public MainFrame() {
         super();
         init();
-
     }
 
 
@@ -103,16 +98,36 @@ public class MainFrame extends JFrame {
      */
     private void initMenuBar() {
         menuBar = new JMenuBar();
-        MenuListener listener = new MenuBarListener();
-        saveMenu = new JMenu("Сохранить");
-        saveMenu.addMenuListener(listener);
-        openMenu = new JMenu("Открыть");
-        openMenu.addMenuListener(listener);
         infoMenu = new JMenu("О программе");
-        infoMenu.addMenuListener(listener);
+        infoMenu.addMenuListener(new MenuListener() {
+            @Override
+            public void menuSelected(MenuEvent e) {
+                if (e.getSource() == infoMenu) {
+                    JOptionPane.showMessageDialog(null,
+                            "Программа визуализирует процесс выполнения алгоритма backtracking в задаче «Расстановка ферзей»,\n" +
+                                    "которая заключается в поиске расстановок N ферзей на шахматной доске размера NxN.\n\n\n" +
+                                    "Разработчики:\n" +
+                                    "Басин Даниил (bassindanil@hotmail.com)\n" +
+                                    "Губа Дмитрий ()\n" +
+                                    "Кадыров Руслан ()\n",
+                            "Информация о программе",
+                            JOptionPane.INFORMATION_MESSAGE);
+                }
+                this.menuDeselected(e);
+                this.menuCanceled(e);
+                menuBar.updateUI();
+            }
 
-        menuBar.add(saveMenu);
-        menuBar.add(openMenu);
+            @Override
+            public void menuDeselected(MenuEvent e) {
+                menuBar.updateUI();
+            }
+
+            @Override
+            public void menuCanceled(MenuEvent e) {
+
+            }
+        });
         menuBar.add(infoMenu);
     }
 
@@ -223,8 +238,6 @@ public class MainFrame extends JFrame {
                     startButton.setEnabled(false);
                     statusPanel.setText("Автоматический перебор шагов алгоритма");
                     graphPanel.drawCombinations();
-
-                    //graphPanel.drawCombination(0);
                 }
                 factor = 1;
             }
@@ -240,7 +253,6 @@ public class MainFrame extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 if (factor == -1) index += 2;
-                System.out.println(index);
                 graphPanel.drawCombination(index++);
                 int arrSize;
                 if (isManual) {
@@ -272,7 +284,6 @@ public class MainFrame extends JFrame {
             public void actionPerformed(ActionEvent e) {
 
                 if (factor == 1) index -= 2;
-                System.out.println(index);
                 graphPanel.drawCombination(index--);
                 if (isManual)
                     statusPanel.printStep(index + 2);
@@ -341,7 +352,6 @@ public class MainFrame extends JFrame {
         rightPanel.add(sizeSubPanel, BorderLayout.NORTH);
         rightPanel.add(modePanel, BorderLayout.CENTER);
         rightPanel.add(buttonsSubPanel, BorderLayout.SOUTH);
-
     }
 
 
@@ -356,77 +366,6 @@ public class MainFrame extends JFrame {
         nextButton.setEnabled(false);
         preButton.setEnabled(false);
         graphPanel.updateUI();
-    }
-
-
-    //NESTED CLASS MENU LISTENER
-    private class MenuBarListener implements MenuListener {
-
-        @Override
-        public void menuSelected(MenuEvent e) {
-            if (e.getSource() == saveMenu) {
-                saveAction();
-            } else if (e.getSource() == openMenu) {
-                openAction();
-
-            } else if (e.getSource() == infoMenu) {
-                infoAction();
-            }
-            this.menuDeselected(e);
-            this.menuCanceled(e);
-            menuBar.updateUI();
-        }
-
-        @Override
-        public void menuDeselected(MenuEvent e) {
-            //DO NOTHING
-        }
-
-        @Override
-        public void menuCanceled(MenuEvent e) {
-            //DO NOTHING
-
-        }
-
-        //Will be use for implementing menu behavior. Will be implemented later
-        private void saveAction() {
-            fileDialog = new JFileChooser("C://");
-            int selectionRes = fileDialog.showDialog(MainFrame.this, "Сохранить файл");
-            if (selectionRes == JFileChooser.APPROVE_OPTION) {
-                File file = fileDialog.getSelectedFile();
-                String path = "";
-                try {
-                    path = file.getCanonicalPath();
-                } catch (IOException e) {
-                    System.out.println("Проблемы с сохранением файла");
-                    e.printStackTrace();
-                }
-                System.out.println(path);
-
-            }
-        }
-
-        private void openAction() {
-            fileDialog = new JFileChooser("C://");
-            int selectionRes = fileDialog.showDialog(MainFrame.this, "Открыть файл");
-            if (selectionRes == JFileChooser.APPROVE_OPTION) {
-                File file = fileDialog.getSelectedFile();
-                String path = "";
-                try {
-                    path = file.getCanonicalPath();
-                } catch (IOException e) {
-                    System.out.println("Проблемы с открытием файла");
-                    e.printStackTrace();
-                }
-                System.out.println(path);
-
-            }
-
-        }
-
-        private void infoAction() {
-
-        }
     }
 
 

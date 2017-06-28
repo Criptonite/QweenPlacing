@@ -134,13 +134,11 @@ public class Backtracking {
         for (int i = 0; i < size; i++) {
             if (matrix[row][i].isFree()) {
                 setQueen(row, i);
-                System.out.println("Set qween " + num);
                 num++;
                 int nextRow = row + 1;
                 tryQueen(nextRow, col, size, num);
                 removeQueen(row, i);
                 num--;
-                System.out.println("Remove qween " + num);
             }
         }
     }

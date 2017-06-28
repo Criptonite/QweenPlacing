@@ -57,7 +57,6 @@ public class GraphPanel extends JPanel {
     }
 
     public void drawCombination(int index){
-        System.out.println(index);
         if("manual".equals(mode))
             desk.setCellMatrix(stepsArray.get(index));
         else if("auto".equals(mode)){
