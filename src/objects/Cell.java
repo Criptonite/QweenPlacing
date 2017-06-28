@@ -8,7 +8,7 @@ import java.io.Serializable;
  * Extended by Dmitriy on 23.06.2017.
  * Extend by Ruslan on 22.06.2017.
  */
-public class Cell extends Rectangle implements Cloneable, Serializable{
+public class Cell extends Rectangle implements Cloneable{
 
     private Color color;
     private Color standardColor;
@@ -35,6 +35,7 @@ public class Cell extends Rectangle implements Cloneable, Serializable{
         }
         occupiedDegree = 0;
     }
+
 
     public Color getStandardColor() {
         return standardColor;

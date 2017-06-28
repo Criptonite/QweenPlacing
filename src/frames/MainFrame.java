@@ -1,5 +1,6 @@
 package frames;
 
+import objects.Cell;
 import objects.Desk;
 import objects.GraphPanel;
 
@@ -14,6 +15,7 @@ import javax.swing.event.MenuListener;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.io.File;
@@ -60,7 +62,8 @@ public class MainFrame extends JFrame {
 
     private StatusPanel statusPanel;
 
-    private JFileChooser fileDialog;
+    private boolean isStopable;
+
 
 
     /**
@@ -109,19 +112,13 @@ public class MainFrame extends JFrame {
             }
 
             @Override
-            public void mouseExited(MouseEvent e) {
-                JMenu infoMenu = (JMenu) e.getSource();
-                infoMenu.setSelected(false);
-            }
-
-            @Override
             public void mouseClicked(MouseEvent e) { menuBar.updateUI();
                     JOptionPane.showMessageDialog(null,
                             "Программа визуализирует процесс выполнения алгоритма backtracking в задаче «Расстановка ферзей»,\n" +
                                     "которая заключается в поиске расстановок N ферзей на шахматной доске размера NxN.\n\n\n" +
                                     "Разработчики:\n" +
                                     "Басин Даниил (bassindanil@hotmail.com)\n" +
-                                    "Губа Дмитрий ()\n" +
+                                    "Губа Дмитрий (gudmian@gmail.com)\n" +
                                     "Кадыров Руслан ()\n",
                             "Информация о программе",
                             JOptionPane.INFORMATION_MESSAGE);
@@ -218,7 +215,7 @@ public class MainFrame extends JFrame {
         buttonsSubPanel.setLayout(buttonsSubLayout);
 
         //Create buttons
-        startButton = new JButton("Автоматический перебор");
+        startButton = new JButton("Начать автоматический перебор");
         startButton.setEnabled(false);
         startButton.setAlignmentX(Component.CENTER_ALIGNMENT);
         startButton.setMinimumSize(buttonMinDimension);
@@ -232,9 +229,12 @@ public class MainFrame extends JFrame {
                     graphPanel.drawCombination(index++);
                     nextButton.setEnabled(true);
                     statusPanel.printStep(index);
+                } else if (isStopable) {
+                    graphPanel.getDrawingTask().interrupt();
                 } else {
+                    startButton.setText("Остановить отрисовку");
+                    isStopable = true;
                     sizeSpinner.setEnabled(false);
-                    startButton.setEnabled(false);
                     statusPanel.setText("Автоматический перебор шагов алгоритма");
                     graphPanel.drawCombinations();
                 }
@@ -394,6 +394,14 @@ public class MainFrame extends JFrame {
 
     public JButton getNextButton() {
         return nextButton;
+    }
+
+    public StatusPanel getStatusPanel() {
+        return statusPanel;
+    }
+
+    public void setStopable(boolean stopable) {
+        isStopable = stopable;
     }
 }
 
